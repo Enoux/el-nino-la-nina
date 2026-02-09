@@ -15,30 +15,43 @@ public class ScreenEdgeInput : MonoBehaviour {
     [Header("Raycast")]
     public LayerMask hotspotLayer;
 
+    Hotspot currentHover;
+
     void Update() {
         if (!cameraController || !cameraController.CanNavigate())
             return;
 
-        // Priority 1: world hotspots
-        if (Mouse.current.leftButton.wasPressedThisFrame) {
-            if (ClickedWorldHotspot())
-                return;
+        var hitHotspot = TryRaycastHotspot();
 
-            TryEdgeNavigation();
+        // Hover Handling (do only if different)
+        if (hitHotspot != currentHover) {
+            if (currentHover != null) {
+                currentHover.OnHoverExit();
+            }
+
+            currentHover = hitHotspot;
+            if (currentHover != null) {
+                currentHover.OnHoverEnter();
+            }
+        }
+
+        // Click Handling (Try Hotspot over Edge Nav)
+        if (Mouse.current.leftButton.wasPressedThisFrame) {
+            if (hitHotspot != null) {
+                hitHotspot.Activate();
+            } else {
+                TryEdgeNavigation();
+            } 
         }
 
     }
 
-    bool ClickedWorldHotspot() {
+    Hotspot TryRaycastHotspot() {
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, hotspotLayer)) {
-            Hotspot h = hit.collider.GetComponent<Hotspot>();
-            if (h != null) {
-                h.Activate();
-                return true;
-            }
+            return hit.collider.GetComponent<Hotspot>();
         }
-        return false;
+        return null;
     }
 
     void TryEdgeNavigation() {

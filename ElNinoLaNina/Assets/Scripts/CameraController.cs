@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour {
         allHotspots = FindObjectsByType<Hotspot>(FindObjectsSortMode.None);
     }
 
-  public bool CanNavigate() {
+    public bool CanNavigate() {
         return !isTransitioning;
     }
 
