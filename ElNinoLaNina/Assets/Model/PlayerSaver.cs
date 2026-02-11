@@ -7,34 +7,39 @@ using System.Collections.Generic;
 public static class SaveFiles
 {
     public static DirectoryInfo directory = new DirectoryInfo("../ElNinoLaNina/Assets/SaveFiles");
-    public static FileInfo[] files = directory.GetFiles("*.json");
 } 
-public class PlayerSaver : MonoBehaviour
+public static class PlayerSaver
 {   
-    public void CreateSaveFile(PlayerSaveFile playerData) {
+    public static bool CreateSaveFile(PlayerSaveFile playerData) {
+        FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
         int saveFileSlot = 1;
 
         // Check which save file is available
-        foreach(FileInfo file in SaveFiles.files) {
+        foreach(FileInfo file in files) {
             if (!file.Name.Contains(saveFileSlot.ToString())) break;
             else saveFileSlot++;
         }
 
+        if (saveFileSlot == 5) return false;
+
         // Dynamically determine path for new savefile
         String path = $"../ElNinoLaNina/Assets/SaveFiles/SaveFile_{saveFileSlot}.json";
+        playerData.slot = saveFileSlot;
 
         // Generate JSON string from class data
         string saveData = JsonUtility.ToJson(playerData);
 
         // Write JSON string into file
         File.WriteAllText(path, saveData);
+        return true;
     }
 
-    public bool UpdateSaveFile(PlayerSaveFile playerData) {
+    public static bool UpdateSaveFile(PlayerSaveFile playerData) {
+        FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
         string saveFilePath = "";
 
         // Look for savefile to be updated based on saveFileName
-        foreach(FileInfo file in SaveFiles.files) {
+        foreach(FileInfo file in files) {
         PlayerSaveFile fileData = JsonUtility.FromJson<PlayerSaveFile>(File.ReadAllText(file.FullName));
             if (fileData.saveFileName == playerData.saveFileName) {
                 saveFilePath = file.FullName;
@@ -53,14 +58,15 @@ public class PlayerSaver : MonoBehaviour
         return true;
     }
 
-    public PlayerSaveFile? LoadSaveFile(String saveFileName)
+    public static PlayerSaveFile? LoadSaveFile(int slot)
     {
+        FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
         PlayerSaveFile? playerSaveFile = null;
 
         // Look for save file with matching name
-        foreach(FileInfo file in SaveFiles.files) {
+        foreach(FileInfo file in files) {
             PlayerSaveFile fileData = JsonUtility.FromJson<PlayerSaveFile>(File.ReadAllText(file.FullName));
-            if (fileData.saveFileName == saveFileName) {
+            if (file.Name.Contains(slot.ToString())) {
                 playerSaveFile = fileData;
                 break;
             }
@@ -69,14 +75,38 @@ public class PlayerSaver : MonoBehaviour
         return playerSaveFile;
     }
 
-    [ContextMenu("TestSaveFile")]
-    public void Testing()
+    public static List<PlayerSaveFile> LoadSaveFiles()
     {
-        PlayerSaveFile player = new PlayerSaveFile();
-        player.saveFileName = "Yo";
-        player.lastSaved = DateTime.Now.ToString();
-        CreateSaveFile(player);
+        FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
+        List<PlayerSaveFile> saveFiles = new List<PlayerSaveFile>();
+
+        foreach(FileInfo file in files) {
+            PlayerSaveFile fileData = JsonUtility.FromJson<PlayerSaveFile>(File.ReadAllText(file.FullName));
+            saveFiles.Add(fileData);
+        }
+
+        return saveFiles;
     }
+
+    public static void DeleteSaveFile(int slot)
+    {   
+        FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
+        foreach(FileInfo file in files) {
+            if (file.Name.Contains(slot.ToString())) {
+                File.Delete(file.FullName);
+                break;
+            }
+        }
+    }
+
+    // [ContextMenu("TestSaveFile")]
+    // public void Testing()
+    // {
+    //     PlayerSaveFile player = new PlayerSaveFile();
+    //     player.saveFileName = "Yo";
+    //     player.lastSaved = DateTime.Now.ToString();
+    //     CreateSaveFile(player);
+    // }
 }
 
 
