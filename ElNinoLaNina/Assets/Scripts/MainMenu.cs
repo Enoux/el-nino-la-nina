@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("New Game clicked");
-        // SceneManager.LoadSceneAsync("TestScene");
+        SceneManager.LoadSceneAsync("TestScene");
 
         PlayerSaveFile player = new PlayerSaveFile();
         player.saveFileName = "Yo";
