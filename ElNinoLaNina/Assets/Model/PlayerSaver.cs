@@ -34,14 +34,14 @@ public static class PlayerSaver
         return true;
     }
 
-    public static bool UpdateSaveFile(PlayerSaveFile playerData) {
+    public static bool UpdateSaveFile(int slot, PlayerSaveFile playerData) {
         FileInfo[] files = SaveFiles.directory.GetFiles("*.json");
         string saveFilePath = "";
 
         // Look for savefile to be updated based on saveFileName
         foreach(FileInfo file in files) {
         PlayerSaveFile fileData = JsonUtility.FromJson<PlayerSaveFile>(File.ReadAllText(file.FullName));
-            if (fileData.saveFileName == playerData.saveFileName) {
+            if (file.Name.Contains(slot.ToString())) {
                 saveFilePath = file.FullName;
                 break;
             }
@@ -98,15 +98,6 @@ public static class PlayerSaver
             }
         }
     }
-
-    // [ContextMenu("TestSaveFile")]
-    // public void Testing()
-    // {
-    //     PlayerSaveFile player = new PlayerSaveFile();
-    //     player.saveFileName = "Yo";
-    //     player.lastSaved = DateTime.Now.ToString();
-    //     CreateSaveFile(player);
-    // }
 }
 
 
