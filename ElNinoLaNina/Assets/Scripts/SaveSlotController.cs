@@ -37,18 +37,20 @@ public class SaveSlotController : MonoBehaviour
         if (loadSlotOverlay.gameObject.activeSelf)
         {
             List<PlayerSaveFile> saveFiles = PlayerSaver.LoadSaveFiles();
+            // Reset displayed save file details
+            for (int i = 0; i < 4; i++)
+            {
+                saveNames[i].text = "Name";
+                saveTimestamps[i].text = "Last Saved";
+            }
 
+            // Load save files (if any)
             int idx = 0;
             for (int i = 0; i < 4; i++)
             {
+                if (idx == saveFiles.Count) break;
                 PlayerSaveFile save = saveFiles[idx];
-                if (save.slot != i + 1)
-                {
-                    saveNames[i].text = "Name";
-                    saveTimestamps[i].text = "Last Saved";
-                }
-
-                else
+                if (save.slot == i + 1)
                 {
                     saveNames[i].text = save.saveFileName;
                     saveTimestamps[i].text = save.lastSaved;
