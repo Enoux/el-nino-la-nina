@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   items:
   - {fileID: 11400000, guid: 2eecc8187b8004ed9b5d2496df8714ea, type: 2}
+  - {fileID: 11400000, guid: a44ea2467dab9470f8d57036507cc098, type: 2}
 --- !u!4 &759020308
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,7 +1166,7 @@ Transform:
   m_GameObject: {fileID: 759020306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.08442, y: 0, z: -1.51735}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1209,6 +1210,12 @@ MonoBehaviour:
   hotspotLayer:
     serializedVersion: 2
     m_Bits: 64
+  defaultCursor: {fileID: 2800000, guid: aadfd655391134f60a26a296db0f4da0, type: 3}
+  pressCursor: {fileID: 2800000, guid: b64bf9d4c573e4fe8bd6c3813d80623c, type: 3}
+  leftCursor: {fileID: 2800000, guid: a85abdc1b46514fa6b92f393227e9761, type: 3}
+  rightCursor: {fileID: 2800000, guid: ac0ec1b47bcce4c3581fb54fb7ff33cd, type: 3}
+  bottomCursor: {fileID: 2800000, guid: 4d43417163a9a40ccae406e7ef36be8a, type: 3}
+  topCursor: {fileID: 2800000, guid: e59a09eb83dc9439e83e639f17e630d3, type: 3}
 --- !u!4 &849605857
 Transform:
   m_ObjectHideFlags: 0

@@ -27,30 +27,26 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(ItemData item)
-    {
-        if (items.Remove(item))
-        {
-            if (SelectedItem == item)
+    public void RemoveItem(ItemData item) {
+        if (items.Remove(item)) {
+            if (SelectedItem == item) {
                 ClearSelection();
+            }
 
             OnInventoryChanged?.Invoke();
         }
     }
 
-    public List<ItemData> GetItems()
-    {
+    public List<ItemData> GetItems() {
         return items;
     }
 
-    public void SelectItem(ItemData item)
-    {
+    public void SelectItem(ItemData item) {
         SelectedItem = item;
         OnSelectionChanged?.Invoke(item);
     }
 
-    public void ClearSelection()
-    {
+    public void ClearSelection() {
         SelectedItem = null;
         OnSelectionChanged?.Invoke(null);
     }
