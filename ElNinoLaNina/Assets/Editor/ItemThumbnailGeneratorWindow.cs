@@ -66,7 +66,8 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
                 continue;
             }
 
-            GenerateThumbnail(item);
+            GenerateThumbnail(item, 45f, 30f, false);
+            GenerateThumbnail(item, 60f, 30f, true);
         }
 
         AssetDatabase.SaveAssets();
@@ -75,7 +76,11 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
         Debug.Log("Thumbnail generation complete.");
     }
 
-    private void GenerateThumbnail(ItemData item) {
+    private void GenerateThumbnail(
+        ItemData item,
+        float yaw, float pitch,
+        bool isForHover
+    ) {
         GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab(item.previewPrefab);
         instance.hideFlags = HideFlags.HideAndDontSave;
 
@@ -93,8 +98,6 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
         Vector3 center = bounds.center;
         float radius = bounds.extents.magnitude;
 
-        float yaw = 45f;
-        float pitch = 30f;
         float camDistance = radius * 2f;
 
         Quaternion camRotation = Quaternion.Euler(pitch, yaw, 0f);
@@ -118,8 +121,9 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
         tex.Apply();
 
         byte[] bytes = tex.EncodeToPNG();
-
-        string filePath = outputFolder + "/Item_" + item.name + ".png";
+        
+        string prefixName = isForHover? "Item_" : "HoverItem_";
+        string filePath = outputFolder+"/"+prefixName + item.name + ".png";
 
         if (File.Exists(filePath) && !overwriteExisting) {
             Debug.Log("Skipping existing: " + item.name);
@@ -147,9 +151,12 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
         importer.SaveAndReimport();
 
         Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(filePath);
-        Debug.Log("File path: " + filePath);
 
-        item.icon = sprite;
+        if (isForHover) {
+            item.hoverIcon = sprite;
+        } else {
+            item.icon = sprite;
+        }
         EditorUtility.SetDirty(item);
     }
 

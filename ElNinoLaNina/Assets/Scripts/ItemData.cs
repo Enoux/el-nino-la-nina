@@ -8,6 +8,7 @@ public class ItemData : ScriptableObject
 
     public GameObject previewPrefab;
     public Sprite icon;
+    public Sprite hoverIcon;
 
     public Vector3 previewRotation;
     public float previewScale = 1f;
