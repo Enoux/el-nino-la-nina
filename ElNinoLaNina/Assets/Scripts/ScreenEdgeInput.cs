@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ScreenEdgeInput : MonoBehaviour {
     [Header("References")]
@@ -42,6 +43,11 @@ public class ScreenEdgeInput : MonoBehaviour {
             } else {
                 TryEdgeNavigation();
             } 
+        }
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            Debug.Log("Escape pressed!");
+            SceneManager.LoadSceneAsync("MainMenu");
         }
 
     }
