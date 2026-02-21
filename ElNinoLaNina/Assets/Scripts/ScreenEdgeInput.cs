@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ScreenEdgeInput : MonoBehaviour {
     [Header("References")]
@@ -16,11 +17,17 @@ public class ScreenEdgeInput : MonoBehaviour {
     [Header("Raycast")]
     public LayerMask hotspotLayer;
 
+    [Header("Cursor Sprites")]
+    public Texture2D cursor;
+
     Hotspot currentHover;
 
     void Update() {
-        if (!cameraController || !cameraController.CanNavigate())
+        if (!cameraController || !cameraController.CanNavigate()) {
             return;
+        } else if (EventSystem.current.IsPointerOverGameObject()) {
+            return;
+        }
 
         var hitHotspot = TryRaycastHotspot();
 

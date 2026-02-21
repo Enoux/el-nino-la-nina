@@ -6,7 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
 
-    private List<ItemData> items = new List<ItemData>();
+    public List<ItemData> items = new List<ItemData>();
     public ItemData SelectedItem { get; private set; }
 
     public event Action OnInventoryChanged;

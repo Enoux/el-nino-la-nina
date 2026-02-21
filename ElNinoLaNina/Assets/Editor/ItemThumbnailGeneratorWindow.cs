@@ -122,7 +122,7 @@ public class ItemThumbnailGeneratorWindow : EditorWindow {
 
         byte[] bytes = tex.EncodeToPNG();
         
-        string prefixName = isForHover? "Item_" : "HoverItem_";
+        string prefixName = isForHover? "HoverItem_" : "Item_";
         string filePath = outputFolder+"/"+prefixName + item.name + ".png";
 
         if (File.Exists(filePath) && !overwriteExisting) {

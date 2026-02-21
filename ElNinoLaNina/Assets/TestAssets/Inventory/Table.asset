@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Table
   description: Table for Testing.
   previewPrefab: {fileID: 4434041570328482383, guid: 693c12d4b9f3f40b38daa948ccb37074, type: 3}
-  icon: {fileID: 21300000, guid: 24f42c1af8c5d4e99927cf71a997c504, type: 3}
-  hoverIcon: {fileID: 21300000, guid: 9576dc1868a934a6b8bfc2227812100c, type: 3}
+  icon: {fileID: 21300000, guid: 9576dc1868a934a6b8bfc2227812100c, type: 3}
+  hoverIcon: {fileID: 21300000, guid: 24f42c1af8c5d4e99927cf71a997c504, type: 3}
   previewRotation: {x: 0, y: 0, z: 0}
   previewScale: 1
   consumeOnUse: 1

@@ -5,11 +5,17 @@ public class InventoryUI : MonoBehaviour {
     public GameObject itemButtonPrefab;
     public Transform contentRoot;
 
-    private void OnEnable() {
+    private void Start() {
+        if (InventoryManager.Instance == null) {
+            Debug.LogError("InventoryManager not found.");
+            return;
+        }
+
         InventoryManager.Instance.OnInventoryChanged += Refresh;
         InventoryManager.Instance.OnSelectionChanged += UpdateSelectionVisual;
         Refresh();
     }
+
 
     private void OnDisable() {
         InventoryManager.Instance.OnInventoryChanged -= Refresh;
@@ -27,6 +33,11 @@ public class InventoryUI : MonoBehaviour {
             var image = go.GetComponent<Image>();
 
             image.sprite = item.icon;
+            SpriteState spriteState = button.spriteState;
+            spriteState.highlightedSprite = item.hoverIcon;
+            spriteState.selectedSprite = item.icon;
+            spriteState.pressedSprite = item.icon;
+            button.spriteState = spriteState;
 
             button.onClick.AddListener(() => {
                 InventoryManager.Instance.SelectItem(item);
