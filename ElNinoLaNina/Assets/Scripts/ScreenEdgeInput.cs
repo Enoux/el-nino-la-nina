@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using System;
 
 public class ScreenEdgeInput : MonoBehaviour {
     [Header("References")]
@@ -39,8 +40,15 @@ public class ScreenEdgeInput : MonoBehaviour {
             return; // Is in the Inventory/Pause Menu
         }
 
+        var hasSelectedItem = InventoryManager.Instance.SelectedItem != null;
+        var clicked = Mouse.current.leftButton.wasPressedThisFrame;
+
         // Changing the Current Hover
         var hitHotspot = TryRaycastHotspot();
+        if (hitHotspot is HSNavigate) { 
+            hitHotspot = hasSelectedItem? null: hitHotspot;
+        }
+
         if (hitHotspot != currentHover) {
             if (currentHover != null) {
                 currentHover.OnHoverExit();
@@ -52,44 +60,35 @@ public class ScreenEdgeInput : MonoBehaviour {
             }
         }
 
-        // Cursor Handling if Item is Selected
-        if (InventoryManager.Instance.SelectedItem != null) {
-            if (currentHover != null && currentHover.type == Hotspot.HotspotType.Interact) {
-                SetCursor(useItemValidCursor);
-                if (Mouse.current.leftButton.wasPressedThisFrame) {
-                    currentHover.Activate();
-                }
-                
-            } else {
-                SetCursor(useItemCursor);
-            }
-
-            if (Mouse.current.leftButton.wasPressedThisFrame) {
-                InventoryManager.Instance.ClearSelection();
-            }
-
-        // Cursor Handling for Navigation Mode
+        // Cursor Sprite Handling
+        if (hasSelectedItem) {
+            SetCursor(currentHover is HSInteract? useItemValidCursor: useItemCursor);
+        } else if (currentHover == null)  {
+            TrySetEdgeCursor();
         } else {
-            if (currentHover == null) {
-                TrySetEdgeCursor();
-            } else {
-                SetCursor(pressCursor);
-            }
-
-            if (Mouse.current.leftButton.wasPressedThisFrame) {
-                if (currentHover == null) {
-                    TryEdgeNavigation();
-                } else {
-                    currentHover.Activate();
-                } 
-            }
+            SetCursor(pressCursor);
         }
 
+        // Cursor Click Handling
+        if (clicked && currentHover is HSNavigate navigateHover) {
+            // NOTE: currentHover is null when hasSelectedItem, so no need to check again
+            navigateHover.ActivateGoTo(); 
+        } else if (clicked && currentHover is HSInteract interactHover) {
+            var item = InventoryManager.Instance.SelectedItem;
+            interactHover.ActivateInteract(item);
+        }
+        if (clicked && hasSelectedItem) {
+            InventoryManager.Instance.ClearSelection();
+        } else if (clicked && !hasSelectedItem) {
+            TryEdgeNavigation();
+        }
+
+
+        // Debug Stuff
         if (Keyboard.current.escapeKey.wasPressedThisFrame) {
             Debug.Log("Escape pressed!");
             SceneManager.LoadSceneAsync("MainMenu");
         }
-
     }
 
     Hotspot TryRaycastHotspot() {

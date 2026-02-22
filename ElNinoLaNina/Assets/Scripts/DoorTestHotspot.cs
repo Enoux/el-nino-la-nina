@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorTestHotspot : Hotspot {
+public class DoorTestHotspot : HSInteract {
 
     [SerializeField]
     GameObject doorObject;

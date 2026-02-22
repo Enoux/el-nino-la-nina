@@ -4,12 +4,6 @@ using System;
 
 public class Hotspot : MonoBehaviour {
 
-    public enum HotspotType { Navigate, Interact, Collect }
-    public HotspotType type;
-
-    [Tooltip("Target viewpoint (only used if Navigate)")]
-    public Viewpoint targetView;
-
     [Tooltip("Only active if the player is in one of these viewpoints")]
     public List<Viewpoint> activeInViews;
 
@@ -19,15 +13,10 @@ public class Hotspot : MonoBehaviour {
     [Tooltip("Alerted when Hotspot is clicked.")]
     public List<MonoBehaviour> clickTargets;
 
-    [Tooltip("Items that can be used on this hotspot")]
-    [SerializeField]
-    private List<ItemData> acceptedItems = new();
-
-    private Collider col;
-    private CameraController cam;
-
-    private List<IHoverReceiver> hoverReceivers = new();
-    private List<IClickReceiver> clickReceivers = new();
+    protected Collider col;
+    protected CameraController cam;
+    protected List<IHoverReceiver> hoverReceivers = new();
+    protected List<IClickReceiver> clickReceivers = new();
 
     void Awake() {
         col = GetComponent<Collider>();
@@ -55,46 +44,6 @@ public class Hotspot : MonoBehaviour {
         } else {
             col.enabled = true;
         }
-    }
-
-    // Called by your input system when clicked
-    public void Activate() {
-        Debug.Assert(col.enabled);
-        OnClick();
-
-        switch (type) {
-            case HotspotType.Navigate:
-                if (targetView != null) {
-                    cam.GoTo(targetView);
-                }
-                break;
-            case HotspotType.Interact:
-                var selectedItem = InventoryManager.Instance.SelectedItem;
-                Interact(selectedItem);
-                break;
-            case HotspotType.Collect: 
-                break;
-        }
-    }
-
-    private void Interact(ItemData item) {
-        if (acceptedItems.Contains(item)) {
-            if (item != null && item.consumeOnUse) {
-                InventoryManager.Instance.RemoveItem(item);
-            }
-            OnInteract(item);
-        } else {
-            Debug.Log("Wrong item.");
-        }
-    }
-
-    protected virtual void OnInteract(ItemData item) {
-        // Override in derived hotspot scripts
-        // Example:
-        // - Open door
-        // - Activate mechanism
-        // - Reveal object
-        // - Change viewpoint
     }
 
     public void OnHoverEnter() {
