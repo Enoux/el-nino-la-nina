@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NUnit.Framework;
 using System;
 
 public class Hotspot : MonoBehaviour {
-    public enum HotspotType { Navigate, Interact, Examine }
+
+    public enum HotspotType { Navigate, Interact, Collect }
     public HotspotType type;
 
     [Tooltip("Target viewpoint (only used if Navigate)")]
@@ -19,21 +19,30 @@ public class Hotspot : MonoBehaviour {
     [Tooltip("Alerted when Hotspot is clicked.")]
     public List<MonoBehaviour> clickTargets;
 
+    [Tooltip("Items that can be used on this hotspot")]
+    [SerializeField]
+    private List<ItemData> acceptedItems = new();
+
     private Collider col;
     private CameraController cam;
+
     private List<IHoverReceiver> hoverReceivers = new();
     private List<IClickReceiver> clickReceivers = new();
-
 
     void Awake() {
         col = GetComponent<Collider>();
         cam = FindFirstObjectByType<CameraController>();
 
         foreach (var target in hoverTargets) {
-            hoverReceivers.Add((IHoverReceiver)target);
+            if (target is IHoverReceiver receiver) {
+                hoverReceivers.Add(receiver);
+            }
         }
+
         foreach (var target in clickTargets) {
-            clickReceivers.Add((IClickReceiver)target);
+            if (target is IClickReceiver receiver) {
+                clickReceivers.Add(receiver);
+            }
         }
 
         UpdateCollider();
@@ -41,25 +50,51 @@ public class Hotspot : MonoBehaviour {
 
     // Call this whenever the viewpoint changes
     public void UpdateCollider() {
-        // Enable collider only if current view is in the active list
         if (activeInViews.Count > 0) {
             col.enabled = activeInViews.Contains(cam.currentView);
         } else {
-            col.enabled = true; // no restriction means always active
+            col.enabled = true;
         }
     }
 
-    // Called when clicked
+    // Called by your input system when clicked
     public void Activate() {
         Debug.Assert(col.enabled);
         OnClick();
 
-        // Navigation
-        if (type == HotspotType.Navigate && targetView != null) {
-            cam.GoTo(targetView);
+        switch (type) {
+            case HotspotType.Navigate:
+                if (targetView != null) {
+                    cam.GoTo(targetView);
+                }
+                break;
+            case HotspotType.Interact:
+                var selectedItem = InventoryManager.Instance.SelectedItem;
+                Interact(selectedItem);
+                break;
+            case HotspotType.Collect: 
+                break;
         }
+    }
 
-        // TODO: Interact / Examine
+    private void Interact(ItemData item) {
+        if (acceptedItems.Contains(item)) {
+            if (item != null && item.consumeOnUse) {
+                InventoryManager.Instance.RemoveItem(item);
+            }
+            OnInteract(item);
+        } else {
+            Debug.Log("Wrong item.");
+        }
+    }
+
+    protected virtual void OnInteract(ItemData item) {
+        // Override in derived hotspot scripts
+        // Example:
+        // - Open door
+        // - Activate mechanism
+        // - Reveal object
+        // - Change viewpoint
     }
 
     public void OnHoverEnter() {

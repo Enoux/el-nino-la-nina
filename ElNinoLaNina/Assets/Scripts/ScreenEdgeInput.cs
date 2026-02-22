@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class ScreenEdgeInput : MonoBehaviour {
     [Header("References")]
@@ -21,6 +22,9 @@ public class ScreenEdgeInput : MonoBehaviour {
     [Header("Cursor Sprites")]
     public Texture2D defaultCursor;
     public Texture2D pressCursor;
+    public Texture2D takeItemCursor;
+    public Texture2D useItemCursor;
+    public Texture2D useItemValidCursor;
     public Texture2D leftCursor;
     public Texture2D rightCursor;
     public Texture2D bottomCursor;
@@ -32,12 +36,11 @@ public class ScreenEdgeInput : MonoBehaviour {
         if (!cameraController || !cameraController.CanNavigate()) {
             return;
         } else if (EventSystem.current.IsPointerOverGameObject()) {
-            return;
+            return; // Is in the Inventory/Pause Menu
         }
 
+        // Changing the Current Hover
         var hitHotspot = TryRaycastHotspot();
-
-        // Hover Handling (do only if different)
         if (hitHotspot != currentHover) {
             if (currentHover != null) {
                 currentHover.OnHoverExit();
@@ -49,20 +52,37 @@ public class ScreenEdgeInput : MonoBehaviour {
             }
         }
 
-        // Cursor Handling
-        if (currentHover == null) {
-            TryEdgeCursor();
-        } else {
-            SetCursor(pressCursor);
-        }
-
-        // Click Handling (Try Hotspot over Edge Nav)
-        if (Mouse.current.leftButton.wasPressedThisFrame) {
-            if (hitHotspot != null) {
-                hitHotspot.Activate();
+        // Cursor Handling if Item is Selected
+        if (InventoryManager.Instance.SelectedItem != null) {
+            if (currentHover != null && currentHover.type == Hotspot.HotspotType.Interact) {
+                SetCursor(useItemValidCursor);
+                if (Mouse.current.leftButton.wasPressedThisFrame) {
+                    currentHover.Activate();
+                }
+                
             } else {
-                TryEdgeNavigation();
-            } 
+                SetCursor(useItemCursor);
+            }
+
+            if (Mouse.current.leftButton.wasPressedThisFrame) {
+                InventoryManager.Instance.ClearSelection();
+            }
+
+        // Cursor Handling for Navigation Mode
+        } else {
+            if (currentHover == null) {
+                TrySetEdgeCursor();
+            } else {
+                SetCursor(pressCursor);
+            }
+
+            if (Mouse.current.leftButton.wasPressedThisFrame) {
+                if (currentHover == null) {
+                    TryEdgeNavigation();
+                } else {
+                    currentHover.Activate();
+                } 
+            }
         }
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame) {
@@ -109,7 +129,7 @@ public class ScreenEdgeInput : MonoBehaviour {
         }
     }
 
-    void TryEdgeCursor() {
+    void TrySetEdgeCursor() {
         switch(getEdgeType()) {
             case EdgeType.left: SetCursor(leftCursor); break;
             case EdgeType.right: SetCursor(rightCursor); break;
