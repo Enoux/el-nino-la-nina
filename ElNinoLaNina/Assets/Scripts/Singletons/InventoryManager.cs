@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance;
 
     public List<ItemData> items = new List<ItemData>();
+    public int inventorySize = 5;
     public ItemData SelectedItem { get; private set; }
 
     public event Action OnInventoryChanged;
@@ -22,6 +23,7 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemData item) {
         if (!items.Contains(item)) {
+            Debug.Log("Added");
             items.Add(item);
             OnInventoryChanged?.Invoke();
         }
