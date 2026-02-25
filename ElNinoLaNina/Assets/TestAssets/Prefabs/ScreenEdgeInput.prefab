@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5253192652264493796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5134611730855589826}
+  - component: {fileID: 5013394244758319140}
+  m_Layer: 0
+  m_Name: ScreenEdgeInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5134611730855589826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253192652264493796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.26894, y: -0, z: 11.09051}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5013394244758319140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5253192652264493796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8024498e9f9bb42c29e9d20d82832950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  cameraController: {fileID: 0}
+  mainCamera: {fileID: 0}
+  leftEdge: 0.08
+  rightEdge: 0.08
+  bottomEdge: 0.12
+  topEdge: 0.08
+  hotspotLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  defaultCursor: {fileID: 2800000, guid: aadfd655391134f60a26a296db0f4da0, type: 3}
+  pressCursor: {fileID: 2800000, guid: b64bf9d4c573e4fe8bd6c3813d80623c, type: 3}
+  takeItemCursor: {fileID: 2800000, guid: eb3b040823db54ad6bbb1419f274a6fd, type: 3}
+  useItemCursor: {fileID: 2800000, guid: 3ff9c5df2559c45169d88e352307bf98, type: 3}
+  useItemValidCursor: {fileID: 2800000, guid: 04b6e8b87bee64915bde0bb1d997c28f, type: 3}
+  leftCursor: {fileID: 2800000, guid: a85abdc1b46514fa6b92f393227e9761, type: 3}
+  rightCursor: {fileID: 2800000, guid: ac0ec1b47bcce4c3581fb54fb7ff33cd, type: 3}
+  bottomCursor: {fileID: 2800000, guid: 4d43417163a9a40ccae406e7ef36be8a, type: 3}
+  topCursor: {fileID: 2800000, guid: e59a09eb83dc9439e83e639f17e630d3, type: 3}
