@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0dd60f79de19654993b3bd8078df8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
-  item: {fileID: 11400000, guid: a44ea2467dab9470f8d57036507cc098, type: 2}
+  item: {fileID: 11400000, guid: 336d3aae4d8912a4dbfd83b8096d3f86, type: 2}
   playerInventory: {fileID: 0}
 --- !u!1001 &1662755339772465434
 PrefabInstance:

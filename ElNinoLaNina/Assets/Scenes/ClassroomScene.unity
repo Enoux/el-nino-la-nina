@@ -1363,6 +1363,58 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1016043592108677592, guid: 101ea9476afd8364f929afaf611c9cef, type: 3}
   m_PrefabInstance: {fileID: 496730464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &547718848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547718850}
+  - component: {fileID: 547718849}
+  m_Layer: 0
+  m_Name: TutorialLevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &547718849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547718848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f835a515d7fed4c669e761f63baf4a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  flashlight: {fileID: 11400000, guid: 336d3aae4d8912a4dbfd83b8096d3f86, type: 2}
+  save:
+    slot: 0
+    saveFileName: 
+    lastSaved: 
+    currentLevel: 0
+    levelStates0: 
+    playerItems: []
+--- !u!4 &547718850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547718848}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 57.63209, y: 0.9832, z: -23.52339}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &572667623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8113967443791695665, guid: 5a9378733e9416b44aafaa57b513a41b, type: 3}
@@ -6057,6 +6109,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da2360fc49cfeec4ca93779724a8cb50, type: 2}
   - {fileID: 11400000, guid: 5ea4a1589b6206e47872a22abc1cf2a6, type: 2}
   socketObject: {fileID: 2019492691}
+  levelManager: {fileID: 547718849}
 --- !u!65 &2015452351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6868,3 +6921,4 @@ SceneRoots:
   - {fileID: 77649776}
   - {fileID: 789195677}
   - {fileID: 148202000}
+  - {fileID: 547718850}
