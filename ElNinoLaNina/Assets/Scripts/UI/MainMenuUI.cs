@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections.Generic;
 public class MainMenu : MonoBehaviour
 {
 
@@ -11,12 +12,17 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("New Game clicked");
-        SceneManager.LoadSceneAsync("TestScene");
+        SceneManager.LoadSceneAsync("ClassroomScene");
 
         PlayerSaveFile player = new PlayerSaveFile();
-        player.saveFileName = "Yo";
+
+        player.saveFileName = "Player"; // Will change in the future to accept user request
         player.lastSaved = DateTime.Now.ToString();
+        player.currentLevel = 0; // 0 = Tutorial Level
+        // player.levelStates.Add();  // Add entry for tutorial level
+
         PlayerSaver.CreateSaveFile(player);
+        PlayerSaveFile.currentSaveFile = player; // Sets newly created savefile as yung sa player
     }
 
     public void Continue()

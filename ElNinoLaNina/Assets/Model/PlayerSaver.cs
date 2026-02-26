@@ -68,6 +68,7 @@ public static class PlayerSaver
             PlayerSaveFile fileData = JsonUtility.FromJson<PlayerSaveFile>(File.ReadAllText(file.FullName));
             if (file.Name.Contains(slot.ToString())) {
                 playerSaveFile = fileData;
+                PlayerSaveFile.currentSaveFile = playerSaveFile;
                 break;
             }
         }

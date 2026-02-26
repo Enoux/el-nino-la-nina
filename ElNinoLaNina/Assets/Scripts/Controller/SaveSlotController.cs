@@ -78,7 +78,7 @@ public class SaveSlotController : MonoBehaviour
 
     public void PlaySaveSlot()
     {
-        SceneManager.LoadSceneAsync("TestScene");
+        SceneManager.LoadSceneAsync("ClassroomScene");
     }
 
     public void DeleteSaveSlot()
