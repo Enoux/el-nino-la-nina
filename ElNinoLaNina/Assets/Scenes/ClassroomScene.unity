@@ -3922,6 +3922,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: da2360fc49cfeec4ca93779724a8cb50, type: 2}
   doorObject: {fileID: 572667623}
+  levelManager: {fileID: 547718849}
+  key: {fileID: 11400000, guid: da2360fc49cfeec4ca93779724a8cb50, type: 2}
 --- !u!65 &1363342758
 BoxCollider:
   m_ObjectHideFlags: 0

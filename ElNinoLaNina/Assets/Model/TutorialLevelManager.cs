@@ -6,7 +6,6 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
 {
     [Header("References")]
     public ItemData flashlight;
-    public PlayerSaveFile save;
     // AttemptExit()
     // Should check if inventory has flashlight and door is clicked
     public void AttemptWin()
@@ -28,7 +27,9 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
     // Update save's current level, loads next level
     public void PlayerWin()
     {
-        save.currentLevel++;
+        PlayerSaveFile.currentSaveFile.currentLevel++;
+        PlayerSaver.UpdateSaveFile(PlayerSaveFile.currentSaveFile.slot, PlayerSaveFile.currentSaveFile);
+        // To comment when running tests since this can only be run in Play Mode
         SceneManager.LoadSceneAsync("TestScene");
     }
 

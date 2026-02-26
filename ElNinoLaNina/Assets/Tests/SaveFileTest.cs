@@ -9,7 +9,6 @@ public class SaveFileTest
     [Test]
     public void SaveFileUnitTesting()
     {
-
         // Use the Assert class to test conditions
         PlayerSaveFile player = new PlayerSaveFile();
         player.saveFileName = "Benj";
@@ -41,5 +40,29 @@ public class SaveFileTest
         players = PlayerSaver.LoadSaveFiles();
         Assert.AreEqual(1, players.Count);
         Assert.AreEqual(JsonUtility.ToJson(player), JsonUtility.ToJson(players[0]));
+        PlayerSaver.DeleteSaveFile(2);
+    }
+
+    [Test]
+    public void SaveFileTutorialLevel()
+    {
+        PlayerSaveFile player = new PlayerSaveFile();
+        player.saveFileName = "Benj";
+        player.lastSaved = DateTime.Now.ToString();
+
+        PlayerSaver.CreateSaveFile(player);
+        player.slot = 1;
+        player.currentLevel = 0;
+
+        PlayerSaveFile.currentSaveFile = player;
+
+        // Test updating of SaveFile using TutorialLevelManager
+        GameObject gameObject = new GameObject("TutorialLevelManager_Test");
+        TutorialLevelManager levelManager = gameObject.AddComponent<TutorialLevelManager>();
+
+        levelManager.PlayerWin();
+
+        Assert.AreEqual(PlayerSaver.LoadSaveFile(1).currentLevel, 1);
+        PlayerSaver.DeleteSaveFile(1);
     }
 }
