@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2676eab86b044624aec0fa6eecbc0fc, type: 3}
+  m_Name: Fork
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Fork
+  description: A metal fork
+  previewPrefab: {fileID: 6586184109641071101, guid: 9cde67c120a97a0439f7052abe895f5c, type: 3}
+  icon: {fileID: 21300000, guid: f810b418dcb31d0408ad54418e401e31, type: 3}
+  hoverIcon: {fileID: 21300000, guid: bc710a8e84b4d0149a686ed185c0a748, type: 3}
+  previewRotation: {x: 0, y: 180, z: 0}
+  previewScale: 1
+  consumeOnUse: 1
