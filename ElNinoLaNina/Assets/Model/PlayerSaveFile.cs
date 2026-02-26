@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using log4net.Core;
 
 [Serializable]
 public class PlayerSaveFile
