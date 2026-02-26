@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
 
         player.saveFileName = "Player"; // Will change in the future to accept user request
         player.lastSaved = DateTime.Now.ToString();
-        player.currentLevel = 0; // 0 = Tutorial Level
+        player.currentLevel = 1; // 0 = Tutorial Level
         // player.levelStates.Add();  // Add entry for tutorial level
 
         PlayerSaver.CreateSaveFile(player);

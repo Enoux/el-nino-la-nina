@@ -62,7 +62,7 @@ public class SaveFileTest
 
         levelManager.PlayerWin();
 
-        Assert.AreEqual(PlayerSaver.LoadSaveFile(1).currentLevel, 1);
+        Assert.AreEqual(PlayerSaver.LoadSaveFile(1).currentLevel, 2);
         PlayerSaver.DeleteSaveFile(1);
     }
 }

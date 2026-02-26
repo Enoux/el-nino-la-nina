@@ -6,10 +6,9 @@ public class DeathScreen : MonoBehaviour
 {
     [Header("UI References")]
     public TMP_Text causeOfDeathText;
-    public PlayerSaveFile save;
     public void Retry()
     {
-        SceneManager.LoadSceneAsync(save.currentLevel);
+        SceneManager.LoadSceneAsync(PlayerSaveFile.currentSaveFile.currentLevel);
     }
 
     public void MainMenu()

@@ -30,7 +30,7 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
         PlayerSaveFile.currentSaveFile.currentLevel++;
         PlayerSaver.UpdateSaveFile(PlayerSaveFile.currentSaveFile.slot, PlayerSaveFile.currentSaveFile);
         // To comment when running tests since this can only be run in Play Mode
-        SceneManager.LoadSceneAsync("TestScene");
+        // SceneManager.LoadSceneAsync("TestScene");
     }
 
     // PlayerDeath()
