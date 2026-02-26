@@ -52,7 +52,7 @@ public class SaveFileTest
 
         PlayerSaver.CreateSaveFile(player);
         player.slot = 1;
-        player.currentLevel = 0;
+        player.currentLevel = 1;
 
         PlayerSaveFile.currentSaveFile = player;
 
