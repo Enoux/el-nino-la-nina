@@ -1393,13 +1393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   flashlight: {fileID: 11400000, guid: 336d3aae4d8912a4dbfd83b8096d3f86, type: 2}
-  save:
-    slot: 0
-    saveFileName: 
-    lastSaved: 
-    currentLevel: 0
-    levelStates0: 
-    playerItems: []
 --- !u!4 &547718850
 Transform:
   m_ObjectHideFlags: 0
@@ -6339,6 +6332,7 @@ MonoBehaviour:
   takeItemCursor: {fileID: 2800000, guid: eb3b040823db54ad6bbb1419f274a6fd, type: 3}
   useItemCursor: {fileID: 2800000, guid: 3ff9c5df2559c45169d88e352307bf98, type: 3}
   useItemValidCursor: {fileID: 2800000, guid: 04b6e8b87bee64915bde0bb1d997c28f, type: 3}
+  craftCursor: {fileID: 2800000, guid: 69a9fbf4b71be43f8a069ecd2fb4c50a, type: 3}
   leftCursor: {fileID: 2800000, guid: a85abdc1b46514fa6b92f393227e9761, type: 3}
   rightCursor: {fileID: 2800000, guid: ac0ec1b47bcce4c3581fb54fb7ff33cd, type: 3}
   bottomCursor: {fileID: 2800000, guid: 4d43417163a9a40ccae406e7ef36be8a, type: 3}

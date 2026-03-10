@@ -12,6 +12,7 @@ public class InventoryManager : MonoBehaviour
 
     public event Action OnInventoryChanged;
     public event Action<ItemData> OnSelectionChanged;
+    private CraftingRecipe[] recipes;
 
     private void Awake() {
         if (Instance == null) {
@@ -19,6 +20,8 @@ public class InventoryManager : MonoBehaviour
         } else {
             Destroy(gameObject);
         }
+
+        recipes = Resources.LoadAll<CraftingRecipe>("CraftingRecipe");
     }
 
     public void AddItem(ItemData item) {
@@ -51,6 +54,28 @@ public class InventoryManager : MonoBehaviour
     public void ClearSelection() {
         SelectedItem = null;
         OnSelectionChanged?.Invoke(null);
+    }
+
+    public bool TryCraft(ItemData a, ItemData b) {
+        foreach (var recipe in recipes) {
+            bool match =
+                (recipe.itemA == a && recipe.itemB == b) ||
+                (recipe.itemA == b && recipe.itemB == a);
+
+            if (match) {
+                if (recipe.consumeA) {RemoveItem(recipe.itemA);}
+                if (recipe.consumeB) {RemoveItem(recipe.itemB);}
+
+                AddItem(recipe.result);
+                ClearSelection();
+                Debug.Log("Crafted " + recipe.result.itemName);
+
+                return true;
+            }
+        }
+
+        Debug.Log("No recipe found");
+        return false;
     }
 
 }

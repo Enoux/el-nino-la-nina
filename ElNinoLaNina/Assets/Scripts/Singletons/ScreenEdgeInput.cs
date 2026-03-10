@@ -2,10 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 using System;
 
 public class ScreenEdgeInput : MonoBehaviour {
+    public static ScreenEdgeInput Instance;
+
     [Header("References")]
     public CameraController cameraController;
     public Camera mainCamera;
@@ -26,18 +27,40 @@ public class ScreenEdgeInput : MonoBehaviour {
     public Texture2D takeItemCursor;
     public Texture2D useItemCursor;
     public Texture2D useItemValidCursor;
+    public Texture2D craftCursor;
     public Texture2D leftCursor;
     public Texture2D rightCursor;
     public Texture2D bottomCursor;
     public Texture2D topCursor;
 
     Hotspot currentHover;
+    private ItemData hoveredInventoryItem;
+
+    void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(gameObject);
+        }
+    }
 
     void Update() {
         if (!cameraController || !cameraController.CanNavigate()) {
             return;
-        } else if (EventSystem.current.IsPointerOverGameObject()) {
-            return; // Is in the Inventory/Pause Menu
+        } 
+
+        // Handle inventory hover BEFORE UI early return
+        if (hoveredInventoryItem != null) {
+            if (InventoryManager.Instance.SelectedItem != null) {
+                SetCursor(craftCursor);
+            } else {
+                SetCursor(pressCursor);
+            }
+            return;
+        }
+
+        if (EventSystem.current.IsPointerOverGameObject()) {
+            return;
         }
 
         var hasSelectedItem = InventoryManager.Instance.SelectedItem != null;
@@ -62,8 +85,8 @@ public class ScreenEdgeInput : MonoBehaviour {
 
         // Cursor Sprite Handling
         if (hasSelectedItem) {
-            SetCursor(currentHover is HSInteract? useItemValidCursor: useItemCursor);
-        } else if (currentHover == null)  {
+            SetCursor(currentHover is HSInteract ? useItemValidCursor : useItemCursor);
+        } else if (currentHover == null) {
             TrySetEdgeCursor();
         } else {
             SetCursor(pressCursor);
@@ -141,5 +164,13 @@ public class ScreenEdgeInput : MonoBehaviour {
     void SetCursor(Texture2D texture) {
         Vector2 hotspotOffset = new Vector2(0,0);
         Cursor.SetCursor(texture, hotspotOffset, CursorMode.Auto);
+    }
+
+    public void OnInventoryHover(ItemData item) {
+        hoveredInventoryItem = item;
+    }
+
+    public void OnInventoryExit() {
+        hoveredInventoryItem = null;
     }
 }

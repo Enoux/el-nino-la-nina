@@ -1,20 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ItemButton : MonoBehaviour
-{
-    public GameObject imageButton; 
-    public GameObject selectOutline; 
+public class ItemButton : MonoBehaviour,
+IPointerEnterHandler,
+IPointerExitHandler {
 
-    public ItemData Item {get; private set;} 
+    public GameObject imageButton;
+    public GameObject selectOutline;
+
+    public ItemData Item { get; private set; }
 
     public void Initialize(ItemData item) {
         SetOutline(false);
         Item = item;
+
         var button = imageButton.GetComponent<Button>();
         var image = imageButton.GetComponent<Image>();
 
         image.sprite = item.icon;
+
         SpriteState spriteState = button.spriteState;
         spriteState.highlightedSprite = item.hoverIcon;
         spriteState.selectedSprite = item.hoverIcon;
@@ -22,7 +27,17 @@ public class ItemButton : MonoBehaviour
         button.spriteState = spriteState;
 
         button.onClick.AddListener(() => {
-            InventoryManager.Instance.SelectItem(Item);
+
+            var inv = InventoryManager.Instance;
+
+            if (inv.SelectedItem == null) {
+                inv.SelectItem(Item);
+            } else {
+                if (!inv.TryCraft(inv.SelectedItem, Item)) {
+                    inv.SelectItem(Item);
+                }
+            }
+
         });
     }
 
@@ -30,5 +45,12 @@ public class ItemButton : MonoBehaviour
         selectOutline.SetActive(visible);
     }
 
+    public void OnPointerEnter(PointerEventData eventData) {
+        ScreenEdgeInput.Instance.OnInventoryHover(Item);
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        ScreenEdgeInput.Instance.OnInventoryExit();
+    }
 
 }
