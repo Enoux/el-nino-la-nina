@@ -28,6 +28,7 @@ public class ScreenEdgeInput : MonoBehaviour {
     public Texture2D useItemCursor;
     public Texture2D useItemValidCursor;
     public Texture2D craftCursor;
+    public Texture2D readCursor;
     public Texture2D leftCursor;
     public Texture2D rightCursor;
     public Texture2D bottomCursor;
@@ -45,6 +46,13 @@ public class ScreenEdgeInput : MonoBehaviour {
     }
 
     void Update() {
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsPlaying) {
+            if (Mouse.current.leftButton.wasPressedThisFrame) {
+                DialogueManager.Instance.NextLine();
+            }
+            return;
+        }
+
         if (!cameraController || !cameraController.CanNavigate()) {
             return;
         } 
@@ -68,7 +76,7 @@ public class ScreenEdgeInput : MonoBehaviour {
 
         // Changing the Current Hover
         var hitHotspot = TryRaycastHotspot();
-        if (hitHotspot is HSNavigate) { 
+        if (hitHotspot is HSNavigate || hitHotspot is HSDialogue) { 
             hitHotspot = hasSelectedItem? null: hitHotspot;
         }
 
@@ -86,6 +94,8 @@ public class ScreenEdgeInput : MonoBehaviour {
         // Cursor Sprite Handling
         if (hasSelectedItem) {
             SetCursor(currentHover is HSInteract ? useItemValidCursor : useItemCursor);
+        } else if (currentHover is HSDialogue) {
+            SetCursor(readCursor);
         } else if (currentHover == null) {
             TrySetEdgeCursor();
         } else {
@@ -99,6 +109,8 @@ public class ScreenEdgeInput : MonoBehaviour {
         } else if (clicked && currentHover is HSInteract interactHover) {
             var item = InventoryManager.Instance.SelectedItem;
             interactHover.ActivateInteract(item);
+        } else if (clicked && currentHover is HSDialogue dialogueHover) {
+            dialogueHover.ActivateDialogue();
         }
         if (clicked && hasSelectedItem) {
             InventoryManager.Instance.ClearSelection();

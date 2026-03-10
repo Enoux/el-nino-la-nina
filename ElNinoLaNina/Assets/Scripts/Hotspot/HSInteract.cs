@@ -7,7 +7,7 @@ public class HSInteract : Hotspot
     [SerializeField]
     private List<ItemData> acceptedItems = new();
 
-    public bool CanActivateInteract(ItemData item) {
+    public virtual bool CanActivateInteract(ItemData item) {
         return acceptedItems.Contains(item);
     }
 
