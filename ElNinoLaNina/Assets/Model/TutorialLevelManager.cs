@@ -35,15 +35,15 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
 
     // PlayerDeath()
     // Informs death screen of cause of death, level to return to, loads death screen
-    public void PlayerDeath(string cause)
+    public static void PlayerDeath(string cause)
     {
         DeathData.CauseOfDeath = cause;
         SceneManager.LoadSceneAsync("DeathScreen");
     }
 
-    void Update()
+    void Start()
     {
-        // check player death, if HP = 0 then playerdeath is called
+        HealthData.currentHP = 100;
+        HealthData.maxHP = 100;
     }
-
 }

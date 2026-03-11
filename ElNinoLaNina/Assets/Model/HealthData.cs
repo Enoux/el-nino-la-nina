@@ -1,6 +1,6 @@
 public static class HealthData
 {
-    public static int CurrentHP;
+    public static int currentHP = 100;
 
-    public static int MaxHP;
+    public static int maxHP = 100;
 }
