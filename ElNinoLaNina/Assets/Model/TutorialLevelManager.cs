@@ -41,4 +41,9 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
         SceneManager.LoadSceneAsync("DeathScreen");
     }
 
+    void Update()
+    {
+        // check player death, if HP = 0 then playerdeath is called
+    }
+
 }
