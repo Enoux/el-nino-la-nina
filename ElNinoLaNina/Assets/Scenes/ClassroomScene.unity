@@ -2717,9 +2717,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -780, y: 590}
+  m_AnchoredPosition: {x: -700, y: 590}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &912859668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100/100
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 92b9bcb21a45a844d8741e0a1514c606, type: 2}
   m_sharedMaterial: {fileID: -1781582124395740901, guid: 92b9bcb21a45a844d8741e0a1514c606, type: 2}
@@ -2774,7 +2774,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4114,6 +4114,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdabb43d36b6475ba4027c4875d2b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  healthText: {fileID: 912859668}
+  healthBarFill: {fileID: 1396184502}
+  topBorder: {fileID: 660476837}
+  botBorder: {fileID: 1482216208}
+  rightBorder: {fileID: 2056372331}
+  healthTextBox: {fileID: 912859667}
 --- !u!4 &1325225745
 Transform:
   m_ObjectHideFlags: 0
@@ -4126,7 +4132,8 @@ Transform:
   m_LocalPosition: {x: 47.86463, y: -1.74709, z: -31.90098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1471956268}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1363342755
@@ -4759,7 +4766,7 @@ RectTransform:
   - {fileID: 1836605070}
   - {fileID: 2056372331}
   - {fileID: 912859667}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1325225745}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6713,7 +6720,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: da2360fc49cfeec4ca93779724a8cb50, type: 2}
   - {fileID: 11400000, guid: 5ea4a1589b6206e47872a22abc1cf2a6, type: 2}
   socketObject: {fileID: 2019492691}
-  levelManager: {fileID: 547718849}
+  healthSystem: {fileID: 1325225744}
 --- !u!65 &2015452351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7890,4 +7897,3 @@ SceneRoots:
   - {fileID: 547718850}
   - {fileID: 5034637402282076978}
   - {fileID: 1325225745}
-  - {fileID: 1471956268}
