@@ -1,0 +1,53 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class PauseMenuManager : MonoBehaviour
+{
+    public GameObject pauseMenu;
+
+    private bool state = false;
+    void Update()
+    {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
+            Debug.Log("Pause Pressed!");
+            if (!state)
+            {
+                PauseGame();
+            }
+            else
+            {
+                UnpauseGame();
+            }
+        }
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        state = true;
+        pauseMenu.SetActive(true);
+    }
+
+    void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        state = false;
+        pauseMenu.SetActive(false);
+    }
+
+    public void ContinueGame()
+    {
+        UnpauseGame();
+    }
+
+    public void ExitGame()
+    {
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+
+    public void SaveGame()
+    {
+        //insert save code
+    }
+}

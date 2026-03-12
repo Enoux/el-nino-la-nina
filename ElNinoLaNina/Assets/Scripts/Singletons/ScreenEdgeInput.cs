@@ -118,12 +118,7 @@ public class ScreenEdgeInput : MonoBehaviour {
             TryEdgeNavigation();
         }
 
-
-        // Debug Stuff
-        if (Keyboard.current.escapeKey.wasPressedThisFrame) {
-            Debug.Log("Escape pressed!");
-            SceneManager.LoadSceneAsync("MainMenu");
-        }
+        
     }
 
     Hotspot TryRaycastHotspot() {
