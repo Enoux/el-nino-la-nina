@@ -2,34 +2,31 @@ using MyGameUILibrary;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
 public class RadialProgressComponent : MonoBehaviour
 {
-    public RadialProgress m_RadialProgress;
+    public RadialProgress m_RadialProgress { get; private set; }
+
+    private UIDocument document;
 
     void OnEnable()
     {
-        var root = GetComponent<UIDocument>().rootVisualElement;
+        document = GetComponent<UIDocument>();
 
-        m_RadialProgress = new RadialProgress() {
-            style = {
-                position = Position.Absolute,
-                left = 20, top = 20, width = 100, height = 100
-            }
-        };
+        if (document == null)
+        {
+            Debug.LogError("RadialProgressComponent requires a UIDocument.");
+            return;
+        }
 
-        root.Add(m_RadialProgress);
+        var root = document.rootVisualElement;
+
+        // Instead of creating a new radial progress element,
+        // find the one defined in the UXML
+        m_RadialProgress = root.Q<RadialProgress>("radial-progress");
+
+        if (m_RadialProgress == null)
+        {
+            Debug.LogError("RadialProgress element not found in UXML. Make sure it has name=\"radial-progress\".");
+        }
     }
-
-    void Update()
-    {
-        // m_RadialProgress.progress = ((Mathf.Sin(Time.time) + 1.0f) / 2.0f) * 60.0f + 10.0f;
-    }
-
-    // public RadialProgress GetRadialProgress()
-    // {
-    //     return m_RadialProgress;
-    // }
-
-
 }

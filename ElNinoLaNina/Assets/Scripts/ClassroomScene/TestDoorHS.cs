@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorHS : HSInteract {
+public class TestDoorHS : HSInteract {
 
     [SerializeField]
     GameObject doorObject;

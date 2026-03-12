@@ -1,71 +1,86 @@
 using UnityEngine;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
-public class QuickTimeEvent : MonoBehaviour
+public class QTEKeyboard : MonoBehaviour
 {
+    [Header("QTE Settings")]
+    [SerializeField] private Key keyTrigger;
+    [SerializeField] private float timer = 2f;
 
-    [SerializeField]
-    private Key keyTrigger; // Key to press during QTE
-    [SerializeField]
-    private RadialProgressComponent timerIndicator;
-    [SerializeField]
-    private float timer;
+    [Header("UI")]
+    [SerializeField] private RadialProgressComponent timerIndicator;
+
+    [Header("Events")]
+    public UnityEvent onSuccess;
+    public UnityEvent onFail;
+
     private float timeLeft;
     private bool isActive;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        timeLeft = timer;
-        isActive = false;
-        timerIndicator.m_RadialProgress.key = keyTrigger.ToString();
-        StartQTE();
+        Hide();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isActive)
+        if (!isActive || timerIndicator == null || timerIndicator.m_RadialProgress == null)
+            return;
+
+        timeLeft -= Time.deltaTime;
+
+        // Update radial progress
+        timerIndicator.m_RadialProgress.progress =
+            (1f - timeLeft / timer) * 100f;
+
+        if (Keyboard.current[keyTrigger].wasPressedThisFrame)
         {
-            timeLeft -= Time.deltaTime;
+            Success();
+            EndQTE();
+        }
 
-            // Update Radial Bar
-            timerIndicator.m_RadialProgress.progress += Time.deltaTime/timer * 100.0f;
-
-            // Debug.Log(timeLeft);
-            // Check for success
-            if (Keyboard.current[keyTrigger].wasPressedThisFrame)
-            {
-                QTESuccess();
-                isActive = false;
-                timeLeft = timer;
-            }
-
-            // Check for failure
-            else if (timeLeft <= 0)
-            {
-                QTEFail();
-                isActive = false;
-                timeLeft = timer;
-            }
+        if (timeLeft <= 0f)
+        {
+            Fail();
+            EndQTE();
         }
     }
 
-    void StartQTE()
+    public void StartQTE()
     {
+        if (timerIndicator == null) return;
+
         isActive = true;
+        timeLeft = timer;
+
+        timerIndicator.gameObject.SetActive(true);
+
+        timerIndicator.m_RadialProgress.progress = 0;
+        timerIndicator.m_RadialProgress.key = keyTrigger.ToString();
     }
 
-    protected virtual void QTESuccess()
+    void EndQTE()
     {
-        Debug.Log("Success!");
-        // Destroy radial progress UI
-        Destroy(timerIndicator.gameObject);
-        // timerIndicator = null;
+        isActive = false;
+        Hide();
     }
-    protected virtual void QTEFail()
+
+    void Hide()
     {
-        Debug.Log("Fail womp womp");
+        if (timerIndicator != null)
+            timerIndicator.gameObject.SetActive(false);
+    }
+
+    void Success()
+    {
+        Debug.Log("QTE Success");
+        onSuccess?.Invoke();
+    }
+
+    void Fail()
+    {
+        Debug.Log("QTE Failed");
+        onFail?.Invoke();
     }
 }
