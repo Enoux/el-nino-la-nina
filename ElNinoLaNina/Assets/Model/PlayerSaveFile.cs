@@ -15,5 +15,5 @@ public class PlayerSaveFile
 
     public List<int> levelStates0 = new List<int>();
 
-    public List<ItemData> playerItems;
+    public List<ItemData> playerItems = new List<ItemData>();
 }

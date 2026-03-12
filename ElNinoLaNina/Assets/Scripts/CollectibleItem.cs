@@ -5,13 +5,6 @@ public class CollectibleItem : MonoBehaviour
 {
     public ItemData item;
     public InventoryManager playerInventory;
-    // public Texture2D hoverCursor;
-    // public Texture2D normalCursor;
-
-    // public CollectibleItem(ScriptableObject item)
-    // {
-        
-    // }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,6 +47,7 @@ public class CollectibleItem : MonoBehaviour
         else
         {   
             playerInventory.AddItem(item);
+            PlayerSaveFile.currentSaveFile.playerItems = playerInventory.GetItems();
             Destroy(this.gameObject);
             return true;
         }
