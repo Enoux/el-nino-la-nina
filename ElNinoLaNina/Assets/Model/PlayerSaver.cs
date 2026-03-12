@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public static class SaveFiles
 {
-    public static DirectoryInfo directory = new DirectoryInfo("../ElNinoLaNina/Assets/SaveFiles");
+    public static DirectoryInfo directory = new DirectoryInfo(Application.persistentDataPath);
 } 
 public static class PlayerSaver
 {   
@@ -23,7 +23,7 @@ public static class PlayerSaver
         if (saveFileSlot == 5) return false;
 
         // Dynamically determine path for new savefile
-        String path = $"../ElNinoLaNina/Assets/SaveFiles/SaveFile_{saveFileSlot}.json";
+        String path = Application.persistentDataPath + $"/SaveFile_{saveFileSlot}.json";
         playerData.slot = saveFileSlot;
 
         // Generate JSON string from class data
