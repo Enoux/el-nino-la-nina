@@ -48,6 +48,8 @@ public class PauseMenuManager : MonoBehaviour
 
     public void SaveGame()
     {
-        //insert save code
+        int slot = PlayerSaveFile.currentSaveFile.slot;
+        PlayerSaveFile save = PlayerSaveFile.currentSaveFile;
+        PlayerSaver.UpdateSaveFile(slot, save);
     }
 }
