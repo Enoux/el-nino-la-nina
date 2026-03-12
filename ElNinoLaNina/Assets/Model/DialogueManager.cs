@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public CanvasGroup inventoryUI;
 
     private string[] lines;
-    private int currentLine;
+    public int currentLine { get; private set; }
 
     public bool IsPlaying { get; private set; }
 
