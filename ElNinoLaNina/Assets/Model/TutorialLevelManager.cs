@@ -19,7 +19,8 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
         }
         else
         {
-            Debug.Log("You are still missing a flashlight");
+            Debug.Log("You went without a flashlight. The timeline diverges.");
+            PlayerWin();
         }
     }
 
