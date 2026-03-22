@@ -8,6 +8,9 @@ public class Character : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] public Animator characterAnim;
+    [Tooltip("Various states of a character (animation-wise)")]
+    public Dictionary<string, int> characterStates = new Dictionary<string, int>();
+    private int state = 0;
 
     [Header("Dialogue")]
     [Tooltip("Character dialogue(s) for different scenarios.")]
@@ -32,18 +35,18 @@ public class Character : MonoBehaviour
         // Character is already dead
         if (!isAlive)
         {
-            CharacterTalk("Dead");
+            Talk("Dead");
         }
 
         // Holding nothing; trigger dialogue instead
         if (item == null)
         {
-            CharacterTalk("Talk");
+            Talk("Talk");
         }
 
         // Character already holding item
         if (heldItem.Count > 0) {
-            CharacterTalk("Inventory Full");
+            Talk("Inventory Full");
             return false;
         }
 
@@ -58,7 +61,12 @@ public class Character : MonoBehaviour
         
     }
 
-    protected virtual void CharacterTalk(string scenario)
+    protected virtual void Talk(string scenario)
+    {
+        
+    }
+
+    protected virtual void Animate(string state)
     {
         
     }
