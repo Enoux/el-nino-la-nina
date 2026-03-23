@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TutorialDialogue
   m_EditorClassIdentifier: ModelScripts::DialogueData
   lines:
-  - '<i>Something is written on the blackboard...</i>
+  - '<i>Mother: </i>Something is written on the blackboard..
 
 '
-  - A flashlight is important for any emergency!
+  - '<i>Child: </i> A flashlight is important for any emergency!'
   - And never put a fork on a socket.
