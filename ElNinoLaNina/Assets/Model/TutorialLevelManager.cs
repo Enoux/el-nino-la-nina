@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System;
 
 public class TutorialLevelManager : MonoBehaviour, LevelManager
 {
@@ -29,6 +30,7 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
     public void PlayerWin()
     {
         PlayerSaveFile.currentSaveFile.currentLevel++;
+        PlayerSaveFile.currentSaveFile.lastSaved = DateTime.Now.ToString();
         PlayerSaver.UpdateSaveFile(PlayerSaveFile.currentSaveFile.slot, PlayerSaveFile.currentSaveFile);
         // To comment when running tests since this can only be run in Play Mode
         // SceneManager.LoadSceneAsync("TestScene");

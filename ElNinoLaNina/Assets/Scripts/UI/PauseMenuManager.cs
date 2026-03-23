@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void SaveGame()
     {
+        PlayerSaveFile.currentSaveFile.lastSaved = DateTime.Now.ToString();
         int slot = PlayerSaveFile.currentSaveFile.slot;
         PlayerSaveFile save = PlayerSaveFile.currentSaveFile;
         PlayerSaver.UpdateSaveFile(slot, save);
