@@ -13,7 +13,8 @@ public class PlayerSaveFile
 
     public int currentLevel;
 
-    public List<int> levelStates0 = new List<int>();
+    public List<string> hotspotStateKeys = new();
+    public List<int> hotspotStateVals = new();
 
-    public List<ItemData> playerItems = new List<ItemData>();
+    public List<ItemData> playerItems = new();
 }
