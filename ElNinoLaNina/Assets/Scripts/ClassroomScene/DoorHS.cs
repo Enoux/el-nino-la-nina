@@ -4,7 +4,6 @@ public class DoorHS : HSInteract {
 
     [SerializeField]
     GameObject doorObject;
-    private int state = 0;
     public TutorialLevelManager levelManager;
     public ItemData key;
     public QTEKeyboard qte;
@@ -15,7 +14,7 @@ public class DoorHS : HSInteract {
     }
 
     protected override void OnInteract(ItemData item = null) {
-        if (state == 0)
+        if (base.state == 0)
         {
             if (item == key)
             {
@@ -27,7 +26,7 @@ public class DoorHS : HSInteract {
             }
             
         }
-        else if (state == 1)
+        else if (base.state == 1)
         {
             levelManager.AttemptWin();
         }
@@ -35,7 +34,8 @@ public class DoorHS : HSInteract {
     }
 
     void QTESuccess() {
-        state = 1;
+        base.state = 1;
+        UpdateState();
         Debug.Log("Door unlocked");
     }
 

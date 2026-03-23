@@ -5,7 +5,6 @@ public class DoorTestHotspot : HSInteract {
     [SerializeField]
     GameObject doorObject;
     private Animator doorAnim;
-    private int state = 0;
     public int maxState = 2;
 
     void Start()
