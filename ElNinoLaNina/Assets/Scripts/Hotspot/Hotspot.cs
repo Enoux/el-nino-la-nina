@@ -18,7 +18,7 @@ public class Hotspot : MonoBehaviour {
     protected List<IHoverReceiver> hoverReceivers = new();
     protected List<IClickReceiver> clickReceivers = new();
 
-    void Awake() {
+    protected void Awake() {
         col = GetComponent<Collider>();
         cam = FindFirstObjectByType<CameraController>();
 
