@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 public class Character : MonoBehaviour
 {
-    [Header("Character Details")]
-    [SerializeField] private string characterName;
-
     [Header("Animation")]
     [SerializeField] public Animator characterAnim;
     [Tooltip("Various states of a character (animation-wise)")]
@@ -15,7 +12,6 @@ public class Character : MonoBehaviour
     [Header("Dialogue")]
     [Tooltip("Character dialogue(s) for different scenarios.")]
     public List<DialogueData> characterDialogues;
-    [SerializeField] private DialogueManager dialogueManager;
 
     private List<ItemData> heldItem = new List<ItemData>(); 
     private bool isAlive;
@@ -63,7 +59,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Talk(string scenario)
     {
-        
+        // Use DialogueManager.Instance to access dialogue manager in the Scene
     }
 
     protected virtual void Animate(string state)
