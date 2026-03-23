@@ -7,12 +7,11 @@ public class CollectibleItem : MonoBehaviour
 {
     public ItemData item;
     public InventoryManager playerInventory;
-    private List<String> hotspotStates;
     private int hotspotIdx;
 
     void Awake()
     {
-        hotspotStates = PlayerSaveFile.currentSaveFile.hotspotStateKeys;
+        List<string> hotspotStates = PlayerSaveFile.currentSaveFile.hotspotStateKeys;
         string name = this.gameObject.name;
 
         // GameObject already in hotspotStates
