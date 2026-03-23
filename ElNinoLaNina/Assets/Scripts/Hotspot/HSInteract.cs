@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class HSInteract : Hotspot
+abstract public class HSInteract : Hotspot
 {
     [Tooltip("Items that can be used on this hotspot")]
     [SerializeField]
