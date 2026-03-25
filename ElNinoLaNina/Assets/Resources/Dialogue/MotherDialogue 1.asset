@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62cfebbcb562c429d8e1cced4db9fb67, type: 3}
-  m_Name: TutorialDialogue
+  m_Name: MotherDialogue 1
   m_EditorClassIdentifier: ModelScripts::DialogueData
   lines:
-  - '<i>Mother: </i>Something is written on the blackboard..
-
-'
-  - '<i>Child: </i> A flashlight is important for any emergency!'
-  - And never put a fork on a socket.
+  - '<i>Mother: </i> I can''t stand up.  '
+  - '<i>Mother: </i> Find the Go Bag. It has a first aid kit inside.  '
+  - '<i>Mother: </i> It''s in the bathroom but you might have to find the key for
+    it first. '

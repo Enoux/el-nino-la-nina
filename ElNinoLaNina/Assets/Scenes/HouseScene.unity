@@ -3670,9 +3670,9 @@ MonoBehaviour:
   clickTargets: []
   acceptedItems:
   - {fileID: 11400000, guid: e2a049b5d1836447799c2bb90bca337e, type: 2}
+  - {fileID: 0}
   mother: {fileID: 1544657799}
   levelManager: {fileID: 1459748938}
-  goBag: {fileID: 11400000, guid: e2a049b5d1836447799c2bb90bca337e, type: 2}
 --- !u!65 &846311768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6584,11 +6584,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544657797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5495eb2a286a4752bf139306213fad9, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a309545a874ac64e85ff5cf202b0e17, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Character
+  m_EditorClassIdentifier: Assembly-CSharp::MotherCH
   characterAnim: {fileID: 0}
-  characterDialogues: []
+  characterDialogues:
+  - {fileID: 11400000, guid: 2bb279f6a49dd104e9be4239001f0115, type: 2}
+  - {fileID: 11400000, guid: a68044696972d48ffa03baec5f2b4a6d, type: 2}
+  goBag: {fileID: 11400000, guid: e2a049b5d1836447799c2bb90bca337e, type: 2}
 --- !u!1 &1586306184 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6586184109641071101, guid: 9cde67c120a97a0439f7052abe895f5c, type: 3}
