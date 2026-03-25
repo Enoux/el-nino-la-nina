@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     [SerializeField] public Animator characterAnim;
     [Tooltip("Various states of a character (animation-wise)")]
     public Dictionary<string, int> characterStates = new Dictionary<string, int>();
-    private int state = 0;
+    protected int state = 0;
 
     [Header("Dialogue")]
     [Tooltip("Character dialogue(s) for different scenarios.")]
@@ -38,6 +38,7 @@ public class Character : MonoBehaviour
         if (item == null)
         {
             Talk("Talk");
+            return false;
         }
 
         // Character already holding item
@@ -50,6 +51,11 @@ public class Character : MonoBehaviour
         heldItem.Add(item);
         OnGiveItem(item);
         return true;
+    }
+
+    public int GetState()
+    {
+        return state;
     }
 
     protected virtual void OnGiveItem(ItemData item)
