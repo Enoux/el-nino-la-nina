@@ -15,7 +15,6 @@ public class Character : MonoBehaviour
 
     private List<ItemData> heldItem = new List<ItemData>(); 
     private bool isAlive;
-    private int state = 0;
 
     void Awake()
     {
