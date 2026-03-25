@@ -1234,6 +1234,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6894743746226902010, guid: f5358a061b11bea4b88d99bc54c41673, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1300,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.68
       objectReference: {fileID: 0}
+    - target: {fileID: 1648303390787186062, guid: ae63181ab57d57249b0afda9b3917f9a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2255,6 +2263,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 29079675115b24f60bf37a283b3e1f65, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 919132149155446097, guid: 29079675115b24f60bf37a283b3e1f65, type: 3}
       propertyPath: m_Name
       value: bed.vox
@@ -2857,6 +2869,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1920827996}
     m_Modifications:
+    - target: {fileID: 5166737424472797274, guid: 9e3e7a1a740bab74db9d609d7ae56d18, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 6210834558370634972, guid: 9e3e7a1a740bab74db9d609d7ae56d18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.843102
@@ -3305,6 +3321,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ceiling Light
       objectReference: {fileID: 0}
+    - target: {fileID: 8296824021527648516, guid: 84ddc9213af793b44a0a0091fd60bbf1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3957,6 +3977,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 39681079}
     m_Modifications:
+    - target: {fileID: 7173819601320412310, guid: 80732c2183e8563439b0d40240fbb4e4, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 8217987008601794576, guid: 80732c2183e8563439b0d40240fbb4e4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -4695,6 +4719,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 591913138}
     m_Modifications:
+    - target: {fileID: 5166737424472797274, guid: 9e3e7a1a740bab74db9d609d7ae56d18, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 6210834558370634972, guid: 9e3e7a1a740bab74db9d609d7ae56d18, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.4062
@@ -5280,6 +5308,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1511843137}
     m_Modifications:
+    - target: {fileID: 3163944661950130470, guid: b89d20cbd6af0494a8650d1aadb967f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 3540364817615003418, guid: b89d20cbd6af0494a8650d1aadb967f6, type: 3}
       propertyPath: m_Name
       value: Dining Table
@@ -5394,6 +5426,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 29079675115b24f60bf37a283b3e1f65, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 919132149155446097, guid: 29079675115b24f60bf37a283b3e1f65, type: 3}
       propertyPath: m_Name
       value: bed.vox (1)
@@ -5641,6 +5677,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1920827996}
     m_Modifications:
+    - target: {fileID: 5627893116307117308, guid: 21afa0321dcadc641885d8e782ad346a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 6112294109893255872, guid: 21afa0321dcadc641885d8e782ad346a, type: 3}
       propertyPath: m_Name
       value: Bedroom Chair
@@ -6976,6 +7016,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1511843137}
     m_Modifications:
+    - target: {fileID: 3163944661950130470, guid: b89d20cbd6af0494a8650d1aadb967f6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 3540364817615003418, guid: b89d20cbd6af0494a8650d1aadb967f6, type: 3}
       propertyPath: m_Name
       value: Dining Table
@@ -7094,6 +7138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Condo Main Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6214586229509968876, guid: d7c197c0b29e1d64bb0038eac9ee8b86, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7112,6 +7160,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1511843137}
     m_Modifications:
+    - target: {fileID: 5291378750122531558, guid: 206fbef8438bdec43a3beb79fd89014c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 6027981322841418970, guid: 206fbef8438bdec43a3beb79fd89014c, type: 3}
       propertyPath: m_Name
       value: Special Light
@@ -7363,6 +7415,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 39681079}
     m_Modifications:
+    - target: {fileID: 5291378750122531558, guid: 206fbef8438bdec43a3beb79fd89014c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6268556df787a40cfa5af8e444e7de6f, type: 2}
     - target: {fileID: 6027981322841418970, guid: 206fbef8438bdec43a3beb79fd89014c, type: 3}
       propertyPath: m_Name
       value: Special Light (1)
