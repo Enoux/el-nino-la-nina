@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ClassroomScene.unity
     guid: 2f8149d9cdb494c08a3eec849e243203
   - enabled: 1
+    path: Assets/Scenes/HouseScene.unity
+    guid: 1a60b6a3d70c8e5468a28a7a5476e2af
+  - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: 54f2f1295d2014879b316a8eb56a80b3
   m_configObjects:

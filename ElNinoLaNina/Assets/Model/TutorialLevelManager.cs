@@ -32,8 +32,13 @@ public class TutorialLevelManager : MonoBehaviour, LevelManager
         PlayerSaveFile.currentSaveFile.currentLevel++;
         PlayerSaveFile.currentSaveFile.lastSaved = DateTime.Now.ToString();
         PlayerSaver.UpdateSaveFile(PlayerSaveFile.currentSaveFile.slot, PlayerSaveFile.currentSaveFile);
-        // To comment when running tests since this can only be run in Play Mode
+        
+        List<ItemData> itemsCopy = new(InventoryManager.Instance.GetItems());
+        foreach (var item in itemsCopy) {
+            InventoryManager.Instance.RemoveItem(item);
+        }
 
+        // To comment when running tests since this can only be run in Play Mode
         SceneManager.LoadSceneAsync("HouseScene");
     }
 
