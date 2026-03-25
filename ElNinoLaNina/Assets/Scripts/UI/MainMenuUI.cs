@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         Debug.Log("New Game clicked");
-        SceneManager.LoadSceneAsync("ClassroomScene");
+        SceneManager.LoadSceneAsync("HouseScene");
 
         PlayerSaveFile player = new PlayerSaveFile();
 

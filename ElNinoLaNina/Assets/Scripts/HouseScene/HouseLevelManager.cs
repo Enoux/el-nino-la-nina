@@ -3,25 +3,30 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 
-public class TutorialLevelManager : MonoBehaviour
+public class HouseLevelManager : MonoBehaviour
 {
     [Header("References")]
     public ItemData flashlight;
+    public MotherHS mother;
     // AttemptExit()
     // Should check if inventory has flashlight and door is clicked
-    public void AttemptWin()
+    public void AttemptExitWindow()
     {
         List<ItemData> inventory = InventoryManager.Instance.GetItems();
 
         if (inventory.Contains(flashlight))
         {
-            Debug.Log("Level complete");
-            PlayerWin();
+            if (mother.getState() == 0) {
+                Debug.Log("You cannot leave mother behind.");
+            }
+            else {
+                Debug.Log("Window exit successful. Level complete.");
+                PlayerWin();
+            }
         }
         else
         {
-            Debug.Log("You went without a flashlight. The timeline diverges.");
-            PlayerWin();
+            Debug.Log("You need to find a flashlight.");
         }
     }
 
@@ -39,7 +44,7 @@ public class TutorialLevelManager : MonoBehaviour
         }
 
         // To comment when running tests since this can only be run in Play Mode
-        SceneManager.LoadSceneAsync("HouseScene");
+        SceneManager.LoadSceneAsync("TestScene");
     }
 
     // PlayerDeath()
