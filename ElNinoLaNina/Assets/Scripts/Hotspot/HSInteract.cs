@@ -23,7 +23,7 @@ abstract public class HSInteract : Hotspot
         {   
             hotspotIdx = hotspotStates.IndexOf(name);
 
-            // Item already collected; should not exist anymore
+            // Hotspot state should update
             state = PlayerSaveFile.currentSaveFile.hotspotStateVals[hotspotIdx];
         }
 

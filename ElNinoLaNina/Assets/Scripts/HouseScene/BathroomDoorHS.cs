@@ -9,10 +9,14 @@ public class BathroomDoorHS : HSInteract {
     private BoxCollider bathroomDoor;
 
     protected override void OnInteract(ItemData item = null) {
+
+        doorState = base.state;
         
         if (item == bathroomKey)
         {
             doorState = 1;
+            base.state = 1;
+            UpdateState();
             Debug.Log("The door is now unlocked!");
         }
 
