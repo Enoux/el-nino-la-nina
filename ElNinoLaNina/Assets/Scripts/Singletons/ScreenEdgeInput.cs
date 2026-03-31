@@ -40,7 +40,6 @@ public class ScreenEdgeInput : MonoBehaviour {
     void Awake() {
         if (Instance == null) {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             mainCamera = FindAnyObjectByType<Camera>();
             cameraController = mainCamera.GetComponent<CameraController>();
         } else {

@@ -18,7 +18,6 @@ public class InventoryManager : MonoBehaviour
         if (Instance == null) {
             Instance = this;
             if (PlayerSaveFile.currentSaveFile != null) InventoryManager.Instance.items = PlayerSaveFile.currentSaveFile.playerItems;
-            DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
         }
