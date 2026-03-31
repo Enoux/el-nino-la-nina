@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class CollectibleItem : MonoBehaviour
 {
     public ItemData item;
-    public InventoryManager playerInventory;
     private int hotspotIdx;
 
     void Awake()
@@ -56,6 +55,8 @@ public class CollectibleItem : MonoBehaviour
 
     public bool CollectItem()
     {
+        var playerInventory = InventoryManager.Instance;
+        
         // Inventory full
         if (playerInventory.items.Count == playerInventory.inventorySize)
         {
