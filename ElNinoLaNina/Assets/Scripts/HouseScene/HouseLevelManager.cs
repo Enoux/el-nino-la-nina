@@ -8,6 +8,7 @@ public class HouseLevelManager : MonoBehaviour
     [Header("References")]
     public ItemData flashlight;
     public MotherHS mother;
+
     // AttemptExit()
     // Should check if inventory has flashlight and door is clicked
     public void AttemptExitWindow()
@@ -59,5 +60,20 @@ public class HouseLevelManager : MonoBehaviour
     {
         HealthData.currentHP = 100;
         HealthData.maxHP = 100;
+    }
+    
+    // NOTE: Creates Save file so you can play this scene directly
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void CreateSaveFile() {
+        Debug.Log("DEBUG: Add Save File");
+
+        PlayerSaveFile player = new PlayerSaveFile();
+
+        player.saveFileName = "Player"; // Will change in the future to accept user request
+        player.lastSaved = DateTime.Now.ToString();
+        player.currentLevel = 2; // 0 = Tutorial Level
+
+        PlayerSaver.CreateSaveFile(player);
+        PlayerSaveFile.currentSaveFile = player; // Sets newly created savefile as yung sa player
     }
 }
