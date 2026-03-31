@@ -1264,6 +1264,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0294c6f7fd9b443e0bb87c0450fe49fd, type: 2}
   doorAnim: {fileID: 1087542499}
   bathroomKey: {fileID: 11400000, guid: 0294c6f7fd9b443e0bb87c0450fe49fd, type: 2}
+  navBathroomDoor: {fileID: 893221480}
 --- !u!65 &206015478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1378,7 +1379,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
   item: {fileID: 11400000, guid: 0294c6f7fd9b443e0bb87c0450fe49fd, type: 2}
-  playerInventory: {fileID: 0}
 --- !u!65 &215381702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4209,6 +4209,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7086575897258078627, guid: 1fe3c236f1ff3447a98181cb0c4b3371, type: 3}
   m_PrefabInstance: {fileID: 932132162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &893221480 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7337309731038404067, guid: 1fe3c236f1ff3447a98181cb0c4b3371, type: 3}
+  m_PrefabInstance: {fileID: 932132162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a411d23bd90e24f709ddeec44fc8621b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &926291860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4295,7 +4306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
   item: {fileID: 11400000, guid: e2a049b5d1836447799c2bb90bca337e, type: 2}
-  playerInventory: {fileID: 0}
 --- !u!65 &926291864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4340,6 +4350,10 @@ PrefabInstance:
     - target: {fileID: 4911207572670045765, guid: 1fe3c236f1ff3447a98181cb0c4b3371, type: 3}
       propertyPath: m_Size.z
       value: 4.2002506
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911207572670045765, guid: 1fe3c236f1ff3447a98181cb0c4b3371, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4911207572670045765, guid: 1fe3c236f1ff3447a98181cb0c4b3371, type: 3}
       propertyPath: m_Center.x
@@ -6673,7 +6687,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleItem
   item: {fileID: 11400000, guid: 5ea4a1589b6206e47872a22abc1cf2a6, type: 2}
-  playerInventory: {fileID: 0}
 --- !u!65 &1586306187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8864,12 +8877,12 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1459748939}
   - {fileID: 284729974}
   - {fileID: 1009089575}
   - {fileID: 958566582}
   - {fileID: 2122743905}
   - {fileID: 1100185480}
   - {fileID: 228030402}
-  - {fileID: 1459748939}
   - {fileID: 1869577789}
   - {fileID: 2124413233}

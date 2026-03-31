@@ -5,26 +5,27 @@ public class BathroomDoorHS : HSInteract {
     [SerializeField]
     public Animator doorAnim;
     public ItemData bathroomKey;
-    private int doorState = 0;
-    private BoxCollider bathroomDoor;
+    public Hotspot navBathroomDoor;
 
-    protected override void OnInteract(ItemData item = null) {
+    void Start()
+    {
+        navBathroomDoor.EnableCollider(false);
+    }
 
-        doorState = base.state;
+  protected override void OnInteract(ItemData item = null) {
         
-        if (item == bathroomKey)
+        if (state == 0 && item == bathroomKey)
         {
-            doorState = 1;
-            base.state = 1;
+            state = 1;
             UpdateState();
             Debug.Log("The door is now unlocked!");
         }
 
-        else if (doorState == 1)
+        else if (state == 1)
         {
-            doorAnim.SetInteger("state", doorState);
-            bathroomDoor = GetComponent<BoxCollider>();
-            bathroomDoor.enabled = false; 
+            doorAnim.SetInteger("state", state);
+            EnableCollider(false);
+            navBathroomDoor.EnableCollider(true);
         }
 
         else if (state == 0)

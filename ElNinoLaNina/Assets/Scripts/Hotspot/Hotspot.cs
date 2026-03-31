@@ -17,9 +17,11 @@ public class Hotspot : MonoBehaviour {
     protected CameraController cam;
     protected List<IHoverReceiver> hoverReceivers = new();
     protected List<IClickReceiver> clickReceivers = new();
+    protected bool isEnabled;
 
     protected void Awake() {
         col = GetComponent<Collider>();
+        isEnabled = col.enabled;
         cam = FindFirstObjectByType<CameraController>();
 
         foreach (var target in hoverTargets) {
@@ -39,11 +41,18 @@ public class Hotspot : MonoBehaviour {
 
     // Call this whenever the viewpoint changes
     public void UpdateCollider() {
-        if (activeInViews.Count > 0) {
+        if (!isEnabled) {
+            col.enabled = false;
+        } else if (activeInViews.Count > 0) {
             col.enabled = activeInViews.Contains(cam.currentView);
         } else {
             col.enabled = true;
         }
+    }
+
+    public void EnableCollider(bool toEnable) {
+        isEnabled = toEnable;
+        col.enabled = toEnable;
     }
 
     public void OnHoverEnter() {
