@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
 
 public class PauseMenuManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject settingsMenu;
+    public TMP_Text devModeText;
 
     private bool state = false;
     void Update()
@@ -54,5 +57,31 @@ public class PauseMenuManager : MonoBehaviour
         int slot = PlayerSaveFile.currentSaveFile.slot;
         PlayerSaveFile save = PlayerSaveFile.currentSaveFile;
         PlayerSaver.UpdateSaveFile(slot, save);
+    }
+
+    public void OpenSettings() 
+    {
+        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+        UpdateDevModeText();
+    }
+
+    public void CloseSettings() 
+    {
+        pauseMenu.SetActive(true);
+        settingsMenu.SetActive(false);
+    }
+
+    public void ToggleDevMode() 
+    {
+        bool devModeEnabled = PlayerSaveFile.currentSaveFile.devModeEnabled;
+        PlayerSaveFile.currentSaveFile.devModeEnabled = !devModeEnabled;
+        UpdateDevModeText();
+    }
+
+    public void UpdateDevModeText() 
+    {
+        bool devModeEnabled = PlayerSaveFile.currentSaveFile.devModeEnabled;
+        devModeText.text = "Dev Mode: " + (devModeEnabled? "On": "Off");
     }
 }
