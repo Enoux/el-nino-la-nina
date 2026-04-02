@@ -17,12 +17,13 @@ public class InventoryManager : MonoBehaviour
     private void Awake() {
         if (Instance == null) {
             Instance = this;
-            if (PlayerSaveFile.currentSaveFile != null) InventoryManager.Instance.items = PlayerSaveFile.currentSaveFile.playerItems;
+            if (PlayerSaveFile.currentSaveFile != null) Instance.items = PlayerSaveFile.currentSaveFile.playerItems;
         } else {
             Destroy(gameObject);
         }
 
         recipes = Resources.LoadAll<CraftingRecipe>("CraftingRecipe");
+        OnInventoryChanged += UpdateSaveFile;
     }
 
     public void AddItem(ItemData item) {
@@ -77,6 +78,10 @@ public class InventoryManager : MonoBehaviour
 
         Debug.Log("No recipe found");
         return false;
+    }
+
+    public void UpdateSaveFile() {
+        PlayerSaveFile.currentSaveFile.playerItems = Instance.GetItems();
     }
 
 }

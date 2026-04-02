@@ -16,6 +16,7 @@ public class BathroomDoorHS : HSInteract {
         
         if (state == 0 && item == bathroomKey)
         {
+            InventoryManager.Instance.RemoveItem(bathroomKey);
             state = 1;
             Debug.Log("The door is now unlocked!");
         }

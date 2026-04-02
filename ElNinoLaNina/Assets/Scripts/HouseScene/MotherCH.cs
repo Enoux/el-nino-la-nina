@@ -10,7 +10,9 @@ public class MotherCH : Character
     {
         if (item == goBag) {
             Debug.Log("Gave Go Bag");
-            base.state = 1;
+            
+            InventoryManager.Instance.RemoveItem(goBag);
+            state = 1;
             Talk("Healed");
         }
     }
@@ -20,7 +22,7 @@ public class MotherCH : Character
         // Use DialogueManager.Instance to access dialogue manager in the Scene
         switch (scenario) {
             case "Talk":
-                if (scenario == "Talk" && base.state == 0) {
+                if (scenario == "Talk" && state == 0) {
                     DialogueManager.Instance.StartDialogue(base.characterDialogues[0]);
                 }
                 break;
