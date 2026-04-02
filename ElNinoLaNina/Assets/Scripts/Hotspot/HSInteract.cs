@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; 
 
 abstract public class HSInteract : Hotspot
 {
@@ -21,17 +22,19 @@ abstract public class HSInteract : Hotspot
         base.Awake();
         
         List<string> hotspotStates = PlayerSaveFile.currentSaveFile.hotspotStateKeys;
-        string name = this.gameObject.name;
+        string objectName = this.gameObject.name;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        string saveName = currentSceneName + objectName;
 
         // GameObject already in hotspotStates
-        if (hotspotStates.Contains(name))
+        if (hotspotStates.Contains(saveName))
         {   
-            hotspotIdx = hotspotStates.IndexOf(name);
+            hotspotIdx = hotspotStates.IndexOf(saveName);
         }
 
         else
         {
-            PlayerSaveFile.currentSaveFile.hotspotStateKeys.Add(name);
+            PlayerSaveFile.currentSaveFile.hotspotStateKeys.Add(saveName);
             PlayerSaveFile.currentSaveFile.hotspotStateVals.Add(0);
             hotspotIdx = hotspotStates.Count - 1;
         }
