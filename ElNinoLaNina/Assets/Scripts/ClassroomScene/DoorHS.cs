@@ -34,6 +34,7 @@ public class DoorHS : HSInteract {
 
     void QTESuccess() {
         state = 1;
+        InventoryManager.Instance.RemoveItem(key);
         Debug.Log("Door unlocked");
     }
 
