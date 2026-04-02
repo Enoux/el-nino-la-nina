@@ -55,19 +55,19 @@ public class Hotspot : MonoBehaviour {
         col.enabled = toEnable;
     }
 
-    public void OnHoverEnter() {
+    public void OnHoverEnterTrigger() {
         foreach (var r in hoverReceivers) {
             r.OnHoverEnter();
         }
     }
 
-    public void OnHoverExit() {
+    public void OnHoverExitTrigger() {
         foreach (var r in hoverReceivers) {
             r.OnHoverExit();
         }
     }
 
-    public void OnClick() {
+    public void OnClickTrigger() {
         foreach (var r in clickReceivers) {
             r.OnClick();
         }

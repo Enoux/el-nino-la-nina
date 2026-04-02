@@ -84,12 +84,12 @@ public class ScreenEdgeInput : MonoBehaviour {
 
         if (hitHotspot != currentHover) {
             if (currentHover != null) {
-                currentHover.OnHoverExit();
+                currentHover.OnHoverExitTrigger();
             }
 
             currentHover = hitHotspot;
             if (currentHover != null) {
-                currentHover.OnHoverEnter();
+                currentHover.OnHoverEnterTrigger();
             }
         }
 

@@ -10,6 +10,6 @@ public class HSNavigate : Hotspot {
         Debug.Assert(col.enabled);
         Debug.Assert(targetView);
         cam.GoTo(targetView);
-        OnClick();
+        OnClickTrigger();
     }
 }

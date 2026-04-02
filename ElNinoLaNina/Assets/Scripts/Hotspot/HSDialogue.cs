@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HSDialogue : Hotspot, IClickReceiver
+public class HSDialogue : Hotspot
 {
     public DialogueData dialogue;
 
