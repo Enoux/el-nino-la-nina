@@ -14,7 +14,7 @@ public class SocketHS : HSInteract
         qte.onFail.AddListener(QTEFail);
     }
 
-  protected override void OnInteract(ItemData item) {
+    public override void OnInteract(ItemData item) {
         // Place Code Here
         // Call level manager "I died"
 

@@ -12,7 +12,7 @@ public class BathroomDoorHS : HSInteract {
         navBathroomDoor.EnableCollider(false);
     }
 
-  protected override void OnInteract(ItemData item = null) {
+    public override void OnInteract(ItemData item = null) {
         
         if (state == 0 && item == bathroomKey)
         {

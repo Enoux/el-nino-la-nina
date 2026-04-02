@@ -110,7 +110,7 @@ public class ScreenEdgeInput : MonoBehaviour {
             navigateHover.ActivateGoTo(); 
         } else if (clicked && currentHover is HSInteract interactHover) {
             var item = InventoryManager.Instance.SelectedItem;
-            interactHover.ActivateInteract(item);
+            interactHover.OnInteract(item);
         } else if (clicked && currentHover is HSDialogue dialogueHover) {
             dialogueHover.ActivateDialogue();
         }

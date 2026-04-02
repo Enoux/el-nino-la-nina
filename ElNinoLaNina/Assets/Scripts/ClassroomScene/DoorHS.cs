@@ -13,7 +13,7 @@ public class DoorHS : HSInteract {
         qte.onFail.AddListener(QTEFail);
     }
 
-    protected override void OnInteract(ItemData item = null) {
+    public override void OnInteract(ItemData item = null) {
         if (state == 0)
         {
             if (item == key)
@@ -30,7 +30,6 @@ public class DoorHS : HSInteract {
         {
             levelManager.AttemptWin();
         }
-        
     }
 
     void QTESuccess() {

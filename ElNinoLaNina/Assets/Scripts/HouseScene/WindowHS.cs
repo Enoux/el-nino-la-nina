@@ -6,12 +6,12 @@ public class WindowHS : HSInteract {
     public HouseLevelManager levelManager;
     public ItemData fork;
 
-    protected override void OnInteract(ItemData item = null) {
-        if (base.state == 0)
+    public override void OnInteract(ItemData item = null) {
+        if (state == 0)
         {
             if (item == fork)
             {
-                base.state = 1;
+                state = 1;
             }
             else
             {
@@ -19,7 +19,7 @@ public class WindowHS : HSInteract {
             }
             
         }
-        else if (base.state == 1)
+        else if (state == 1)
         {
             levelManager.AttemptExitWindow();
         }

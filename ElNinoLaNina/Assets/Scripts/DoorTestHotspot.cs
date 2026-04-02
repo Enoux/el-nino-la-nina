@@ -11,7 +11,7 @@ public class DoorTestHotspot : HSInteract {
     {
         doorAnim = doorObject.GetComponent<Animator>();
     }
-    protected override void OnInteract(ItemData item) {
+    public override void OnInteract(ItemData item) {
 
         if (doorObject.activeSelf)
         {

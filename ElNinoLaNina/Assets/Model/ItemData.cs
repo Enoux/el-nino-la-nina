@@ -13,6 +13,4 @@ public class ItemData : ScriptableObject
     public Vector3 previewRotation;
     public float previewScale = 1f;
     // public Vector3 previewOffset;
-
-    public bool consumeOnUse = true;
 }
