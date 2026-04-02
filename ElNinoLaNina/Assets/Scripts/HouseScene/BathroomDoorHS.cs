@@ -17,7 +17,6 @@ public class BathroomDoorHS : HSInteract {
         if (state == 0 && item == bathroomKey)
         {
             state = 1;
-            UpdateState();
             Debug.Log("The door is now unlocked!");
         }
 

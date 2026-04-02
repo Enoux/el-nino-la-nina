@@ -14,7 +14,7 @@ public class DoorHS : HSInteract {
     }
 
     protected override void OnInteract(ItemData item = null) {
-        if (base.state == 0)
+        if (state == 0)
         {
             if (item == key)
             {
@@ -26,7 +26,7 @@ public class DoorHS : HSInteract {
             }
             
         }
-        else if (base.state == 1)
+        else if (state == 1)
         {
             levelManager.AttemptWin();
         }
@@ -34,8 +34,7 @@ public class DoorHS : HSInteract {
     }
 
     void QTESuccess() {
-        base.state = 1;
-        UpdateState();
+        state = 1;
         Debug.Log("Door unlocked");
     }
 

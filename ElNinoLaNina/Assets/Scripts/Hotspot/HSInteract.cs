@@ -6,12 +6,18 @@ abstract public class HSInteract : Hotspot
     [Tooltip("Items that can be used on this hotspot")]
     [SerializeField]
     private List<ItemData> acceptedItems = new();
-    protected int state = 0;
     protected int hotspotIdx;
+    protected int state {
+        get {
+            return PlayerSaveFile.currentSaveFile.hotspotStateVals[hotspotIdx];
+        }
+        set {
+            PlayerSaveFile.currentSaveFile.hotspotStateVals[hotspotIdx] = value;
+        }
+    }
 
     new void Awake()
     {
-
         // Run hotspot Awake()
         base.Awake();
         
@@ -22,9 +28,6 @@ abstract public class HSInteract : Hotspot
         if (hotspotStates.Contains(name))
         {   
             hotspotIdx = hotspotStates.IndexOf(name);
-
-            // Hotspot state should update
-            state = PlayerSaveFile.currentSaveFile.hotspotStateVals[hotspotIdx];
         }
 
         else
@@ -53,10 +56,5 @@ abstract public class HSInteract : Hotspot
 
     protected virtual void OnInteract(ItemData item) {
         // Override in derived hotspot scripts
-    }
-
-    protected void UpdateState()
-    {
-        PlayerSaveFile.currentSaveFile.hotspotStateVals[hotspotIdx] = state;
     }
 }
