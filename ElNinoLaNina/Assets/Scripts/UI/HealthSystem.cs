@@ -14,7 +14,10 @@ public class HealthSystem : MonoBehaviour
     Vector2 origTextPos;
     Vector2 origBorderPos;
 
-    public void TakeDamage(int val, string cause) {
+    public void TakeDamage(int val, string cause) 
+    {
+        if (PlayerSaveFile.currentSaveFile.godModeEnabled) {return;}
+        
         if (HealthData.currentHP - val <= 0)
         {
             HealthData.currentHP = 0;
@@ -28,6 +31,8 @@ public class HealthSystem : MonoBehaviour
 
     public void ReduceMax(int val, string cause)
     {
+        if (PlayerSaveFile.currentSaveFile.godModeEnabled) {return;}
+        
         if (HealthData.maxHP - val <= 50)
         {
             HealthData.maxHP = 50;

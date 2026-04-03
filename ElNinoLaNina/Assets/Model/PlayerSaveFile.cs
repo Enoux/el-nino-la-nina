@@ -13,6 +13,7 @@ public class PlayerSaveFile
 
     public int currentLevel;
     public bool devModeEnabled;
+    public bool godModeEnabled;
 
     public List<string> hotspotStateKeys = new();
     public List<int> hotspotStateVals = new();

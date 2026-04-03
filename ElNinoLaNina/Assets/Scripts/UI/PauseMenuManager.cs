@@ -76,6 +76,9 @@ public class PauseMenuManager : MonoBehaviour
     {
         bool devModeEnabled = PlayerSaveFile.currentSaveFile.devModeEnabled;
         PlayerSaveFile.currentSaveFile.devModeEnabled = !devModeEnabled;
+        if (!PlayerSaveFile.currentSaveFile.devModeEnabled) {
+            PlayerSaveFile.currentSaveFile.godModeEnabled = false;
+        }
         UpdateDevModeText();
     }
 
