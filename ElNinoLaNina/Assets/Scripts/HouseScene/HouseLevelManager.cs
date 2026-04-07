@@ -2,12 +2,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 
 public class HouseLevelManager : MonoBehaviour
 {
     [Header("References")]
     public ItemData flashlight;
     public MotherHS mother;
+
+    public HealthSystem healthSystem;
+    public CameraController cameraController;
+    public List<Viewpoint> fireViewpoints;
 
     // AttemptExit()
     // Should check if inventory has flashlight and door is clicked
@@ -60,5 +65,21 @@ public class HouseLevelManager : MonoBehaviour
     {
         HealthData.currentHP = 100;
         HealthData.maxHP = 100;
+        StartCoroutine(InflictSmokeDamage());
+    }
+
+    IEnumerator InflictSmokeDamage() {
+        while (true) {
+            for (int i = 0; i < 4; i++) {
+                // Double the smoke damage if close to fire
+                if (fireViewpoints.Contains(cameraController.currentView)) {
+                    yield return new WaitForSeconds(0.125f);
+                } else {
+                    yield return new WaitForSeconds(0.25f);
+                } 
+            }
+            
+            healthSystem.TakeDamage(1, "Smoke Inhalation");
+        }
     }
 }
