@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 public class MainMenu : MonoBehaviour
 {
-
+    [Header("UI Overlays")]
+    public Transform exitOverlay;
     public Transform loadGameOverlay;
-    // public Transform saveSlotOverlay;
+    public Transform saveSlotOverlay;
+    public Transform settingsOverlay;
 
     // private int selectedSaveSlot = 0;
     public void NewGame()
@@ -29,11 +31,19 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Continue clicked");
         loadGameOverlay.gameObject.SetActive(true);
+        exitOverlay.gameObject.SetActive(true);
     }
 
     public void Exit()
     {
         Debug.Log("Exit clicked");
         Application.Quit();
+    }
+
+    public void CloseOverlay()
+    {
+        loadGameOverlay.gameObject.SetActive(false);
+        saveSlotOverlay.gameObject.SetActive(false);
+        exitOverlay.gameObject.SetActive(false);
     }
 }
