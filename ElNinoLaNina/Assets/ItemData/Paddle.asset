@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2676eab86b044624aec0fa6eecbc0fc, type: 3}
+  m_Name: Paddle
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Paddle
+  description: 'A paddle to use in the water
+
+'
+  previewPrefab: {fileID: 2286548177995775133, guid: 093f10c7130044042af2248708d99ab4, type: 3}
+  icon: {fileID: 21300000, guid: e4fb0e36c4a43b14aad90793d2fdd5b4, type: 3}
+  hoverIcon: {fileID: 21300000, guid: bdb066237927b4b438b7f20d0fc3fa48, type: 3}
+  previewRotation: {x: 0, y: 180, z: 0}
+  previewScale: 1
