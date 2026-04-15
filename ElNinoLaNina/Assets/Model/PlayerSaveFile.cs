@@ -6,6 +6,7 @@ public class PlayerSaveFile
 {
 
     public static PlayerSaveFile currentSaveFile;
+    public static bool universalDevMode = false;
 
     public int slot;
     public string saveFileName;
