@@ -2,23 +2,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
+using TMPro;
 public class MainMenu : MonoBehaviour
 {
     [Header("UI Overlays")]
     public Transform exitOverlay;
+
+    public Transform newGameOverlay;
     public Transform loadGameOverlay;
     public Transform saveSlotOverlay;
     public Transform settingsOverlay;
 
-    // private int selectedSaveSlot = 0;
+    public TMP_InputField playerName;
     public void NewGame()
     {
         Debug.Log("New Game clicked");
+        newGameOverlay.gameObject.SetActive(true);
+        exitOverlay.gameObject.SetActive(true);
+    }
+
+    public void Play()
+    {
         SceneManager.LoadSceneAsync("ClassroomScene");
 
         PlayerSaveFile player = new PlayerSaveFile();
 
-        player.saveFileName = "Player"; // Will change in the future to accept user request
+        player.saveFileName = playerName.text;
         player.lastSaved = DateTime.Now.ToString();
         player.currentLevel = 1; // 0 = Tutorial Level
         // player.levelStates.Add();  // Add entry for tutorial level
