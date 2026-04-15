@@ -89,8 +89,9 @@ public class SaveSlotController : MonoBehaviour
     public void PlaySaveSlot()
     {
         PlayerSaveFile saveFile = PlayerSaver.LoadSaveFile(selected);
+        if (PlayerSaveFile.universalDevMode) saveFile.devModeEnabled = true;
+        PlayerSaveFile.currentSaveFile = saveFile;
         SceneManager.LoadSceneAsync(saveFile.currentLevel);
-        
     }
 
     public void DeleteSaveSlot()

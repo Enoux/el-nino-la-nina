@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
         // player.levelStates.Add();  // Add entry for tutorial level
 
         PlayerSaver.CreateSaveFile(player);
+        if (PlayerSaveFile.universalDevMode) player.devModeEnabled = true;
         PlayerSaveFile.currentSaveFile = player; // Sets newly created savefile as yung sa player
     }
 
@@ -32,6 +33,15 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Continue clicked");
         loadGameOverlay.gameObject.SetActive(true);
         exitOverlay.gameObject.SetActive(true);
+    }
+
+    public void Settings()
+    {
+        settingsOverlay.gameObject.SetActive(true);
+        exitOverlay.gameObject.SetActive(true);
+
+        // Update Dev Mode Toggle Value
+        settingsOverlay.gameObject.GetComponent<Settings>().UpdateDevModeText();
     }
 
     public void Exit()
@@ -44,6 +54,7 @@ public class MainMenu : MonoBehaviour
     {
         loadGameOverlay.gameObject.SetActive(false);
         saveSlotOverlay.gameObject.SetActive(false);
+        settingsOverlay.gameObject.SetActive(false);
         exitOverlay.gameObject.SetActive(false);
     }
 }
