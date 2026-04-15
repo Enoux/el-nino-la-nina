@@ -17,7 +17,7 @@ public class OverrideSave : MonoBehaviour
         {
             saveFileName = "OVERRIDE", // Will change in the future to accept user request
             lastSaved = DateTime.Now.ToString(),
-            currentLevel = 0 // 0 = Tutorial Level
+            currentLevel = 1 // 0 = Tutorial Level
         };
 
     PlayerSaver.CreateSaveFile(player);
