@@ -71,11 +71,16 @@ public class SaveSlotController : MonoBehaviour
     public void SelectSaveSlot(int slot)
     {
         // Checks if selected save file still exists
-        if (PlayerSaver.LoadSaveFile(slot) != null)
+        if (PlayerSaver.LoadSaveFile(slot) != null && !saveSlotOverlay.gameObject.activeSelf)
         {
             Debug.Log("Opened save file!");
             saveSlotOverlay.gameObject.SetActive(true);
             loadSlotOverlay.gameObject.SetActive(false);
+            selected = slot;
+        }
+
+        else if (saveSlotOverlay.gameObject.activeSelf)
+        {
             selected = slot;
         }
         
