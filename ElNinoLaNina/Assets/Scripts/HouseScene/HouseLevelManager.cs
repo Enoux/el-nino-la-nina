@@ -50,7 +50,7 @@ public class HouseLevelManager : MonoBehaviour
         }
 
         // To comment when running tests since this can only be run in Play Mode
-        SceneManager.LoadSceneAsync("TestScene");
+        SceneManager.LoadSceneAsync("CityScene");
     }
 
     // PlayerDeath()
