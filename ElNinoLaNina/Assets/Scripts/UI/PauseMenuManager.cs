@@ -30,6 +30,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         Time.timeScale = 0;
         state = true;
+        Debug.Log("Dev Mode Enabled: " + PlayerSaveFile.currentSaveFile.devModeEnabled);
         pauseMenu.SetActive(true);
     }
 
@@ -63,6 +64,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         settingsMenu.SetActive(true);
+        Debug.Log("Dev Mode Enabled: " + PlayerSaveFile.currentSaveFile.devModeEnabled);
         UpdateDevModeText();
     }
 

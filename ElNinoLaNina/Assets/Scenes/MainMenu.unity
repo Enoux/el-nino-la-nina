@@ -7078,7 +7078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fa41f535d51484c85d296e82c0d896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewGame
-  playerName: {fileID: 1451844057}
 --- !u!1 &1712099396
 GameObject:
   m_ObjectHideFlags: 0

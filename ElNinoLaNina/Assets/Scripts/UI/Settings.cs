@@ -9,6 +9,7 @@ public class Settings : MonoBehaviour
     public void ToggleDevMode() 
     {
         PlayerSaveFile.universalDevMode = !PlayerSaveFile.universalDevMode;
+        Debug.Log("Universal Dev Mode: " + PlayerSaveFile.universalDevMode);
         UpdateDevModeText();
     }
 

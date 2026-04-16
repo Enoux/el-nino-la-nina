@@ -4,7 +4,7 @@ public class BasementDoorHS : HSInteract {
 
     [SerializeField]
     public Animator doorAnim;
-    public ItemData catto;
+    public ItemData basementKey;
     public Hotspot navBasementDoor;
 
     void Start()
@@ -14,11 +14,11 @@ public class BasementDoorHS : HSInteract {
 
     public override void OnInteract(ItemData item = null) {
         
-        if (state == 0 && item == catto)
+        if (state == 0 && item == basementKey)
         {
-            InventoryManager.Instance.RemoveItem(catto);
+            InventoryManager.Instance.RemoveItem(basementKey);
             state = 1;
-            // Debug.Log("The door is now unlocked!");
+            Debug.Log("The door is now unlocked!");
         }
 
         else if (state == 1)
@@ -30,7 +30,7 @@ public class BasementDoorHS : HSInteract {
 
         else if (state == 0)
         {
-            // Debug.Log("The door is locked!");
+            Debug.Log("The door is locked!");
         }
     }
 }
