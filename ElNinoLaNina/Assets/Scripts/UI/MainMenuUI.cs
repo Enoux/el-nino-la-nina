@@ -61,6 +61,7 @@ public class MainMenu : MonoBehaviour
 
     public void CloseOverlay()
     {
+        newGameOverlay.gameObject.SetActive(false);
         loadGameOverlay.gameObject.SetActive(false);
         saveSlotOverlay.gameObject.SetActive(false);
         settingsOverlay.gameObject.SetActive(false);

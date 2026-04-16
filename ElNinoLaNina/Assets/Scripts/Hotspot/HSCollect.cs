@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using NUnit.Framework;
 
 public class HSCollect : HSInteract
